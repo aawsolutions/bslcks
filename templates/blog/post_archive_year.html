@@ -1,0 +1,22 @@
+{% extends "blog/base_blog.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "News archive for" %} {{ year }}{% endblock %}
+{% block body_class %}{{ block.super }} post_archive_year{% endblock %}
+
+
+{% block content_title %}
+  <h2>{% trans "Nost archive for" %} {{ year }}</h2>
+{% endblock %}
+
+
+{% block content %}  
+<div class="grid_8">
+  <ul class="link_list">
+    {% for month in date_list %}
+    <li><a href="{% url blog_index %}{{ year }}/{{ month|date:"b" }}/" title="{% trans "View items posted this month" %}">{{ month|date:"F" }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

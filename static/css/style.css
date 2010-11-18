@@ -1,0 +1,396 @@
+body {
+   font-family: Cantarell, Candara, "Helvetica Neue", Arial, sans-serif;
+   color: #808080;
+}
+
+h1 {
+   font-family: Vollkorn, Constantia, Georgia, serif;
+   font-weight: normal;
+   color: #044959;
+}
+
+a {
+   color: #8F0303;
+}
+
+a:hover {
+   color: #C75C5C;
+   text-decoration: none;
+}
+
+    button {
+        background: #628703;
+        color: #fff;
+        border: 2px solid #628703;
+        margin: 0px;
+    }
+
+    button:hover { 
+        background: #044959;
+        border: 1px solid #628703;
+        margin: 1px;
+    }
+
+    button:active {
+        background: #8F0303;
+        border: 1px solid #628703;
+        margin: 1px;
+    }
+
+.emergency {
+    background: #8F0303;
+    color: #fff;
+    font-size: 1.25em;
+}
+.emergency a{
+    color: #fff;
+    text-decoration: underline;
+}
+
+.top {
+    margin-bottom: 10px;
+}
+
+.buffed {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Special block styling */
+.logo {
+   letter-spacing: 2px;
+}
+    .logo p { 
+        text-align: right;
+        font-size: .9em;
+    }
+    .logo a {
+        text-decoration: none;
+        color: #808080;
+    }
+
+.bigblock {
+    font-size: 1.3em;
+    /*height: 180px;*/
+}
+    .bigblock h1 {
+        margin-bottom: 0px;
+    }
+    .bigblock strong {
+        color: #628703;
+    }
+    .bigblock li {
+        display: inline;
+        list-style-type: none;
+        margin-left: 0px;
+        margin-right: 15px;
+    }
+
+.mediaicons img {
+   margin-right: 20px;
+   margin-top: 5px;
+   width: 50px;
+}
+
+.toplink {
+    font-family: Vollkorn, Constantia, Georgia, serif;
+    font-size: 1.5em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+    .toplink a {
+        text-decoration: none;
+        margin-right: 35px;
+    }
+    .toplink a:hover {
+        color: #fff;
+        background: #8F0303;
+    }
+
+.mainimg {
+    background: #808080;
+    height: 250px;
+
+}
+
+
+#header {
+    margin-bottom: 15px;
+    text-align: right;
+    padding-right: 25px;
+}
+
+
+#footer {
+    margin-top: 20px;
+    height: 120px;
+    background: #044959;
+    color: #fff;
+    width: 100%;
+    line-height: 1em;
+}
+    #footer a {
+        color: #fff;
+        text-decoration: none;
+    }
+    #footer a:hover {
+        color: #ccc;
+    }
+    #footer p {
+        margin-bottom: 4px;
+    }
+    .f_links {
+       padding-top: 5px;
+    }
+    .f_info {
+       text-align: right;
+       padding-top: 5px;
+    }
+
+.sidenav {
+
+}
+    .sidenav ul {
+
+    } 
+    .sidenav li {
+        list-style: none;
+        
+    }
+
+#map_canvas {
+    height: 400px;
+    margin-top: 15px;
+}
+    .map_form p {
+        text-align: right;
+        font-size: 1.6em;
+        margin-top: 10px;
+        color: #044959;
+    }  
+
+    .map_form input {
+        font-size: 1.15em;
+        padding: 5px;
+        border: 1px solid gray;
+        width: 361px;
+        color: gray;
+    }
+    .map_infowindow {
+        color: #044959;
+        letter-spacing: 1px;
+    }
+
+.devotion {
+
+}
+    .devotion a{
+    text-decoration: none;
+    }
+    .small-caps {
+        text-transform: uppercase;
+        font-size: 90%
+    }
+.devotional_thoughts {
+    float: right;
+    border-left: 1px dotted #044959;
+    margin-left: 10px;
+    width: 305px;
+}
+    .devotional_thoughts h2 {
+        font-family: Vollkorn, Constantia, Georgia, serif;
+        font-weight: normal;
+        color: #044959;
+        padding: 0px 10px 0px 10px;
+        margin-bottom: 10px;
+    }
+    .devotional_thoughts p {
+        font-size: 1.15em;
+        padding-left: 10px;
+    }
+
+.sub_page_content {
+    color: #424242;
+    font-size: 1.05em;
+    margin-top: 5px;
+}
+    .sub_page_content h2 {
+        font-family: Vollkorn, Constantia, Georgia, serif;
+        font-weight: normal;
+        color: #044959;
+        margin-bottom: 10px;
+    }
+
+    .sub_page_content h3 {
+        margin-bottom: 5px;
+        font-size: 1.15em;
+        color: #628703;
+
+    }
+
+
+    .quote {
+        background: url('/images/lqm.png') no-repeat left top;
+    }
+    .sub_page_content blockquote {
+        margin-left: 30px;
+        padding-left: 1em;
+        text-indent: -1em;
+        color: #628703; 
+    }
+    .lastq {
+        background: url('/images/rqm.png') no-repeat right top;
+        height: 60px;
+    }
+
+    .verse-num {
+        color: gray;
+    }
+
+    .footnotes {
+        font-family: Arial, sans-serif;
+        font-size: .75em;
+    }
+    .footnotes h3 {
+        color: #044959; 
+        width: 300px;
+        border-top: 1px solid #424242;
+    }
+
+.beliefs {
+
+}
+    .beliefs ul {
+        list-style-type: none;
+    }
+    .beliefs li {
+         background: url(/images/gothiccrossbullet.png) left top no-repeat;
+         padding-left: 15px;
+    }
+
+.staff {
+}
+    .staff h1 { margin-bottom: 0px;}
+    .profile {
+        margin-bottom: 40px;
+    }
+    .profile img {
+        float: right;
+        width: 140px;
+        margin-left: 20px;
+    }
+
+#debug p { 
+    height: 400px;
+    overflow: scroll;
+    background: #fff;
+    opacity: .8;
+    filter: alpha(opacity=80)
+    color: #ccc;
+    position: absolute;
+    top: -390px;
+}
+    #debug p:hover {
+        top: 0px;
+    }
+
+.content_title h2 {
+    font-family: Vollkorn, Constantia, Georgia, serif;
+    font-weight: normal;
+    color: #044959;
+    margin-bottom: 5px;
+}
+.content_title p {
+    margin-bottom: 0px;
+}
+
+#comments {
+    margin-left: 20px;
+    padding-top: 5px;
+    border-top: 1px dashed #ccc;
+}
+    #comments h3 {
+        font-family: Vollkorn, Constantia, Georgia, serif;
+        font-weight: normal;
+        font-size: 1em;
+        color: #044959;
+        margin-bottom: 5px;
+    }
+
+.date {
+    color: #628703;
+    margin-bottom: 5px;    
+}
+.body {
+    color: #424242;
+    margin-bottom: 15px;    
+    margin-left: 20px;
+}
+
+#controls ol {
+    width: 460px;
+}
+
+    .loginform button {
+        background: #628703;
+        color: #fff;
+        border: 2px solid #628703;
+        margin: 0px;
+    }
+
+    .loginform button:hover { 
+        background: #044959;
+        border: 1px solid #628703;
+        margin: 1px;
+    }
+
+    .loginform button:active {
+        background: #8F0303;
+        border: 1px solid #628703;
+        margin: 1px;
+    }
+
+.post_list {
+
+}
+    .post_list h3 {
+        margin-left:20px;
+        margin-bottom:5px;
+    }
+    .post_list p{
+        margin-bottom:0px;
+    }
+    .item {
+        margin-bottom: 20px;
+        color: #424242;
+    }
+    .tease {
+        margin-left:20px;
+    }
+
+.nav_block {
+    margin-top: 20px;
+}
+    .nav_block ul {
+        list-style: none;
+    }
+    .nav_block p {
+        margin-bottom: 0px;
+    }
+
+.author {
+    float: right;
+    margin: 0px 0px 10px 10px;
+    border: 1px solid
+}
+
+.object_inline {
+    margin: 10px 0px 10px 0px;
+    padding: 5px;
+    border-top: 1px dashed #ccc;
+}
+    .sermon p{
+        margin: 5px 30px 5px 30px;
+    }
+    

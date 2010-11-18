@@ -1,0 +1,18 @@
+{% extends "congregation/base_congregation.html" %}
+
+{% block title %}Talents List{% endblock %}
+{% block body_class %}{{ block.super }} talents_list{% endblock %}
+
+
+{% block content_title %}
+  <h2>Time and Talents</h2>
+{% endblock %}
+
+
+{% block content %}
+  <ul class="link_list">
+    {% for talent in object_list %}
+    <li><a href="{{ talent.get_absolute_url }}" title="View posts in this category">{{ talent }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

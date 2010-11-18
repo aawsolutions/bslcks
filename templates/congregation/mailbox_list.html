@@ -1,0 +1,18 @@
+{% extends "congregation/base_congregation.html" %}
+
+{% block title %}Malbox List{% endblock %}
+{% block body_class %}{{ block.super }} mailbox_list{% endblock %}
+
+
+{% block content_title %}
+  <h2>Church Mailboxes</h2>
+{% endblock %}
+
+
+{% block content %}
+  <ul class="link_list">
+    {% for box in object_list %}
+    <li><a href="{{ box.get_absolute_url }}" title="View posts in this category">{{ box }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

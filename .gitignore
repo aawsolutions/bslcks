@@ -1,0 +1,8 @@
+# sensitive information
+settings.py
+
+private/
+static/images
+static/photologue/
+static/sermons/
+static/960

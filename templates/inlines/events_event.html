@@ -1,0 +1,7 @@
+<div class="object_inline">
+<strong>What:</strong> <span class="date">{{ object.title }}</span><br/>
+<strong>Where:</strong> <a href="{{ object.place.get_absolute_url }}">{{ object.place }}</a><br/>
+<strong>When:</strong><span class="date"> {% for time in object.event_times.values %}{{ time.start }}{% if time.end %} to {{ time.end }}{% endif %}<br/>{% endfor %}</span>
+</div>
+
+

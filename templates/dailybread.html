@@ -1,0 +1,22 @@
+{% extends 'base_site.html' %}
+
+{% load comments %}
+
+{% block title %}Daily Bread{% endblock %}
+
+{% block content %}
+    <div class="grid_8">    
+
+    <div class="devotion">                        {% if dailybread.devotion.thoughts %}
+        <div class="devotional_thoughts">
+        <p>{{ dailybread.devotion.thoughts }}</p>
+        </div>                                    {% endif %}
+        <div class="sub_page_content">
+        {% autoescape off %}{{ dailybread.passage }}{% endautoescape %}
+<a style="float: right;" href="http://www.esv.org/"><img src="http://www.esv.org/assets/buttons/esv.seal.png" alt="Visit www.esv.org to learn about the ESV Bible" title="Visit www.esv.org to learn about the ESV Bible" width="120" height="35" /></a>
+        </div>
+    </div>
+
+    </div>
+{% endblock %}
+

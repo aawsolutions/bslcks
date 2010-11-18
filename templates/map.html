@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Map and Directions{% endblock %}
+
+{% block extra_head %}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var latlng = new google.maps.LatLng(38.895050,-94.768925);
+        var options = {
+            zoom: 14,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }; 
+        var contentString = '<div class="map_infowindow">13145 Blackbob Road<br/>Olathe, KS 66062<br/>913~780~6023</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+
+        var map = new google.maps.Map(document.getElementById('map_canvas'), options);
+        var marker = new google.maps.Marker({  
+            position: new google.maps.LatLng(38.891285,-94.7596),  
+            map: map,  
+            title: 'Beautiful Savior Lutheran Church',  
+            clickable: true,  
+            icon: '{{ MEDIA_URL}}images/crossico.png'  
+        });
+        infowindow.open(map,marker);
+
+        google.maps.event.addListener(marker, 'click', function() {
+           infowindow.open(map,marker);
+        });
+    });
+
+
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="grid_4">
+        <a href="/"><img src="{{ MEDIA_URL }}images/logo-300.png" alt="return home"/></a>
+     <div style="height: 45px;"></div>
+    <div class="bigblock">
+        <h1>Worship with us!</h1>
+        <p>
+          <strong>Sunday Worship</strong> morning services @ 8:00am, 10:45am, and 6:00p <br/>
+          <strong>Family Education Hour</strong> @ 9:30am
+        </p>
+        <p>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/beliefs">Beliefs</a></li>
+            <li><a href="/staff">Staff</a></li>
+          </ul>
+        </p>
+    </div>
+    </div>
+    <div class="grid_8">
+        <div id="map_canvas"></div>
+        <span class="map_form">
+        <form action="http://maps.google.com/maps" method="get">
+            <p><label for="saddr">Enter your starting address</label>
+            <input type="text" name="saddr" id="saddr" value="" /><br/>
+            <button type="submit">Get Directions</button>
+            <input type="hidden" name="daddr" value="13145 South Blackbob Road, Olathe, KS 66062-1417" />
+            <input type="hidden" name="hl" value="en" /></p>
+        </form>
+        </span>
+    </div>
+
+    <div class="clear"></div>
+    
+{% endblock %}
+

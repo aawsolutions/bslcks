@@ -1,0 +1,79 @@
+{% load apitags mytags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+{% block html_declare %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" >
+{% endblock %}
+<head>
+    <title>{% block title %}Beautiful Savior Lutheran Church{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}960/reset.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}960/text.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}960/960.css" />
+
+    <link rel="stylesheet" href="{{ MEDIA_URL}}css/style.css" type="text/css" media="all" charset="utf-8" />
+{% if keys %}    <script src="http://www.google.com/jsapi?key={{ keys|fetchkey:"Google"  }} " type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>{% endif %}
+    <link href="http://fonts.googleapis.com/css?family=Vollkorn:regular,bold&amp;subset=latin" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Cantarell:regular,italic,bold&amp;subset=latin" rel="stylesheet" type="text/css" />
+    
+    {% block extra_head %}{% endblock %}
+
+    <script type="text/javascript"> 
+        $(function(){
+{% block documentreadyfunction %}{% endblock %}              
+    	});	
+    </script> 
+
+
+    <meta name="robots" content="noarchive,nofollow,noindex"/>
+    <link rel="shortcut icon" href="http://static.bslcks.info/images/favicon.png" />
+</head>
+
+<body id="{% block body_id %}main{% endblock %}" class="{% block body_class %}normal{% endblock %}">
+    {% block emergency_message %}{% endblock %}
+    <div id="header">
+        {% if user.is_authenticated %}{% with user.get_profile as profile %}
+        Signed in as <strong><a href="{{ profile.get_absolute_url }}">{{ profile }}</a></strong> - Click here to <a href="/accounts/logout">logout</a><br/>
+        {% endwith %}{% else %}
+         BSLCKS Members, click <a href="/accounts/login?next={{ request.path }}">here</a> to login
+        {% endif %} 
+   </div>
+
+    <div class="container_12"> 
+      {% block logo %}
+      {% endblock %}
+
+      {% block body %}
+      {% block wrapper_div %}{% endblock %}
+        <div class="content_title">
+          {% block content_title %}{% endblock %}
+        </div>
+        <div class="content">
+          {% block content %}{% endblock %}
+        </div>
+      {% block wrapper_div_close %}{% endblock %}
+        <div class="clear"></div>
+      {% endblock %}
+    </div>
+
+    {% fetch_bookmarks "footerlink" %}
+    <div id="footer">
+      <div class="container_12">
+         <div class="grid_1 f_links">
+            <a href="http://www.cph.org" target="_blank"><img src="http://www.cph.org/images/topics/images/clipart/webart/CPHlogo2b.gif" width="75" height="100" alt="Concordia Publishing House Logo"/></a>
+         </div>
+         <div class="grid_5 f_links"> {% for link in footerlink %}
+            <p><a href="{{ link.url }}" title="{{ link.description }}">{{ link.title }}</a> </p> {% endfor %}
+         </div>
+         <div class="grid_6 f_info">
+            <p><a href="/copyright">&copy; 2005 - 2010 Beautiful Savior Lutheran Church, Missouri Synod</a></p>
+            <p><a href="http://aawsolutions.com">Site designed and hosted by aaw.Solutions</a></p>
+         </div>
+      </div>
+    </div>
+<div id="debug">
+<span style="color: #fff">Debug parameters</span>
+</div>
+</body>
+</html>

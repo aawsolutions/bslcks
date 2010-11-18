@@ -1,0 +1,24 @@
+{% extends "base_site.html" %}
+{% load blog %}
+
+{% block documentreadyfunction %}
+    $('.cat_links').toggle(shorOrHide);
+{% endblock %}
+
+{% block body_class %}blog{% endblock %}
+
+{% block leftnav %}
+    <div class="nav_block">
+        <a href="{% url blog_index %}">News Home</a>
+    </div>
+    <div class="nav_block">
+        <p id="cat_browser">Browse by Category</p>
+        {% get_blog_categories as b_categories %}
+
+        {% for m in b_categories %}<ul id="cat_links">
+            {% if m.title != "Front Page" %} <li><a href="{{m.get_absolute_url}}">{{ m.title }}</a></li>{% endif %}
+        {% endfor %}
+        </div>
+{% endblock %}
+
+

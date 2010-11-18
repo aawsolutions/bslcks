@@ -1,0 +1,6 @@
+{% load markup %}
+<div class="object_inline">
+    <a href="{{ object.audio_file.url }}" target=_BLANK>Click here to download the sermon</a>
+    <div class="quote sermon"><p>{{ object.text|markdown }}</p></div>
+</div>
+
