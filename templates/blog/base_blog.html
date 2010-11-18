@@ -12,13 +12,12 @@
         <a href="{% url blog_index %}">News Home</a>
     </div>
     <div class="nav_block">
-        <p id="cat_browser">Browse by Category</p>
-        {% get_blog_categories as b_categories %}
-
-        {% for m in b_categories %}<ul id="cat_links">
-            {% if m.title != "Front Page" %} <li><a href="{{m.get_absolute_url}}">{{ m.title }}</a></li>{% endif %}
-        {% endfor %}
+        <p id="cat_browser">Browse by Category</p>  {% get_blog_categories as b_categories %}
+        <ul id="cat_links">{% for m in b_categories %}
+            {% if m.title != "Front Page" %} <li><a href="{{m.get_absolute_url}}">{{ m.title }}</a></li>{% endif %} {% endfor %}
+        </ul>
         </div>
+    </div>
 {% endblock %}
 
 
