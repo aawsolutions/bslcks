@@ -4,8 +4,11 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" >
 {% endblock %}
 <head>
-    <title>{% block title %}Beautiful Savior Lutheran Church{% endblock %}</title>
+    <title>{% block title %}Beautiful Savior Lutheran Church in Olathe, KS{% endblock %}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="{% block meta_author %}Beautiful Savior Lutheran Church{% endblock %}" />
+    <meta name="keywords" lang="en-us" content="BSLCKS, Beautiful Savior Lutheran Church, Lutheran Church, Beautiful Savior{% block meta_keywords %}, MO Synod, Missouri Synod, Lutheren, Lutheran,Johnson County, Olathe, Overland Park, Spring Hill, Stanley, BlackBob, Black-Bob, Pre-School, preschool, teaching children, kids, religious, religion, school, MDO, Mother's Day Out{% endblock %}" />
+    <meta name="description" lang="en-us" content="{% block meta_description %}Worship with us in Olathe, Kansas!  Connecting people to Jesus as we gather, gro and go since 1991{% endblock %}" />
 
     <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}960/reset.css" />
     <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}960/text.css" />
@@ -16,7 +19,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>{% endif %}
     <link href="http://fonts.googleapis.com/css?family=Vollkorn:regular,bold&amp;subset=latin" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Cantarell:regular,italic,bold&amp;subset=latin" rel="stylesheet" type="text/css" />
-    
+
     {% block extra_head %}{% endblock %}
 
     <script type="text/javascript"> 
@@ -24,9 +27,6 @@
 {% block documentreadyfunction %}{% endblock %}              
     	});	
     </script> 
-
-
-    <meta name="robots" content="noarchive,nofollow,noindex"/>
     <link rel="shortcut icon" href="http://static.bslcks.info/images/favicon.png" />
 </head>
 

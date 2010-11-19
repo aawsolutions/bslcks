@@ -2,6 +2,7 @@
 
 {% load i18n mytags markup %}
 
+
 {% block title %}{{ object.title }}{% endblock %}
 {% block body_class %}{{ block.super }} post_detail{% endblock %}
 {% block body_id %}post_{{ object.id }}{% endblock %}
@@ -21,7 +22,7 @@
 
 {% block content %}
 <div class="grid_8">
-  {% load blog comments tagging_tags inlines markup %}
+  {% load blog comments tagging_tags inlines markup %}{% block meta_keywords %},{{ object.tags }}{% endblock %}
   <p class="date">{{ object.publish|date:"F jS Y" }} {% if object.author.get_profile %}by <a href="{{ object.author.get_profile.get_absolute_url }}">{{ object.author.get_profile }}</a>{% endif%}</p>
 
   <div class="body">
