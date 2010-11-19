@@ -16,7 +16,6 @@
         <ul id="cat_links">{% for m in b_categories %}
             {% if m.title != "Front Page" %} <li><a href="{{m.get_absolute_url}}">{{ m.title }}</a></li>{% endif %} {% endfor %}
         </ul>
-        </div>
     </div>
 {% endblock %}
 

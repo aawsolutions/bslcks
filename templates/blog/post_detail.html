@@ -1,28 +1,21 @@
-{% extends "blog/base_blog.html" %}
-
-{% load i18n mytags markup %}
-
-
+{% extends "blog/base_blog.html" %}  {% load i18n mytags markup %}
 {% block title %}{{ object.title }}{% endblock %}
-{% block body_class %}{{ block.super }} post_detail{% endblock %}
-{% block body_id %}post_{{ object.id }}{% endblock %}
 
-{% block content_title %}
-  <h2>{{ object.title }}</h2>
-  <p class="other_posts">
-    {% if object.get_previous_by_publish %}
-    <a class="previous" href="{{ object.get_previous_post.get_absolute_url }}" title="{% trans "View previous post" %}">&laquo; {{ object.get_previous_post }}</a>
+{% block meta_keywords %},{{ object.tags }}{% endblock %}
+
+{% block content %}
+    <div class="grid_8 sub_page_content">
+        <h2>{{ object.title }}</h2>
+        <p class="other_posts">
+        {% if object.get_previous_by_publish %}
+        <a class="previous" href="{{ object.get_previous_post.get_absolute_url }}" title="{% trans "View previous post" %}">&laquo; {{ object.get_previous_post }}</a>
     {% endif %}
     {% if object.get_next_by_publish %}
     | <a class="next" href="{{ object.get_next_post.get_absolute_url }}" title="{% trans "View next post" %}">{{ object.get_next_post }} &raquo;</a>
     {% endif %}
   </p>
-{% endblock %}
 
-
-{% block content %}
-<div class="grid_8">
-  {% load blog comments tagging_tags inlines markup %}{% block meta_keywords %},{{ object.tags }}{% endblock %}
+  {% load blog comments tagging_tags inlines markup %}
   <p class="date">{{ object.publish|date:"F jS Y" }} {% if object.author.get_profile %}by <a href="{{ object.author.get_profile.get_absolute_url }}">{{ object.author.get_profile }}</a>{% endif%}</p>
 
   <div class="body">
