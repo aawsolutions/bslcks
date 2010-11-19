@@ -1,6 +1,7 @@
-This particular setup is customized for use at Beautiful Savior Lutheran Church in Olathe, KS (http://bslcks.org)
+# BSLCKS
+A django project customized for use at Beautiful Savior Lutheran Church in Olathe, KS (http://bslcks.org)
 
-==TODO:==
+## TODO:
 Mostly in order
 * Profile Page template
 * Site Search
