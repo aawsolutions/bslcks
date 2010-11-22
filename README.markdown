@@ -7,6 +7,7 @@ Mostly in order
  * Profile Page template
  * Site Search
  * Date-based navigation for news in left block
+ * Liturgi-Cal (church year detection and banner for homepage)
  * api keys tag for the base template (allow jquery on non-core apps templates)
  * Pretty comment form
  * Outline dependancies in the app (low priority)

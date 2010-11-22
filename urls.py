@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from bslcks.feeds import LatestNewsFeed
 
 #Admin
 from django.contrib import admin
@@ -21,6 +22,8 @@ urlpatterns = patterns('',
     (r'^places/', include('basic.places.urls')),
 
     (r'^dailybread/', include('dailybread.urls')),
+
+    (r'^rss/', LatestNewsFeed()),
 )
 
 urlpatterns += patterns('bslcks.views',
