@@ -6,6 +6,7 @@ Mostly in order
 
  * Profile Page template
  * Site Search
+ * Edit logo to include mission statement on homepage
  * Date-based navigation for news in left block
  * Liturgi-Cal (church year detection and banner for homepage)
  * api keys tag for the base template (allow jquery on non-core apps templates)
