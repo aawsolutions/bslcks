@@ -15,4 +15,6 @@
     <li><a href="{{ person.get_absolute_url }}" title="View posts in this category">{{ person }}</a></li>
     {% endfor %}
   </ul>
+        {% if has_previous %}<a href="?page={{  previous }}">&#060;&#060; previous</a> || {% endif %}{% if has_next %}<a href="?page={{ next }}">next &#062;&#062;</a>{% endif %}
+
 {% endblock %}

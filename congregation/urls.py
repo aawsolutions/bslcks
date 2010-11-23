@@ -7,32 +7,21 @@ urlpatterns = patterns('congregation.views',
         view='congregation_home',
         name='congregation_home'
     ),
-)
 
-talents_list = {
-    'queryset': Talents.objects.all(),
-}
+    url(r'^households/$',
+        view='household_list', 
+        name='households_list'),
 
-households_list = {
-    'queryset': Household.objects.all(),
-    'template_name': 'congregation/household_list.html',
-    'paginate_by': 20,
-}
-
-urlpatterns += patterns('',
-
-    (r'^directory/households/$',list_detail.object_list, households_list),
-
-    url(r'^directory/housholds/(?P<slug>[-\w]+)/$',
+    url(r'^housholds/(?P<slug>[-\w]+)/$',
         view='household_detail',
         name='household_detail'
     ),
 
-    url(r'^directory/people/$',
+    url(r'^people/$',
         view='person_list',
         name='person_list'
     ),
-    url(r'^directory/people/(?P<slug>[-\w]+)/$',
+    url(r'^people/(?P<slug>[-\w]+)/$',
         view='person_detail',
         name='person_detail'
     ),

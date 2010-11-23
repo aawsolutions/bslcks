@@ -1,0 +1,52 @@
+{% extends "congregation/base_congregation.html" %}
+{% load markup %}
+
+{% block title %}{{ object }}{% endblock %}
+{% block body_class %}{{ block.super }} person_detail{% endblock %}
+
+
+{% block content_title %}
+  <h2>{% if object.prefix %}{{ object.prefix.prefix }} {% endif %}{{ object }}</h2>
+{% endblock %}
+
+
+{% block content %}
+<h3>Contact Info</h3>
+<ul>
+    {% if object.landline %}<li> Landline: {{ object.landline }}</li>{% endif %}
+    {% if object.cellphone %}<li>Cellphone: {{ object.cellphone }}</li>{% endif %}
+    {% if object.email %}<li>Email: <a href="mailto:{{ object.email }}">{{ object.email }}</a></li>{% endif %}
+</ul>
+
+<h3>About</h3>
+<ul>
+    <li><a href="{{ object.household.get_absolute_url }}">Household</a></li>
+    {% if object.birth_date %}<li>Birthday: {{ object.birth_date|date:"F jS" }}</li>{% endif %}
+    {% if object.baptism_date %}<li>Baptised: {{ object.baptism_date|date:"F jS" }}</li>{% endif %}
+    {% if object.joined %}<li>Joined: {{ object.joined|date:"F jS, Y" }}</li>{% endif %}
+    {% if object.bio %}<li>Bio: {{ object.bio|markdown }}</li>{% endif %}
+</ul>    
+{% if object.role.exists %}
+    <h3>Roles</h3>
+    <ul>{% for r in object.role.values %}
+        <li>{{ r.name }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if object.leaders.values or object.members.values %}<h3>Groups</h3>
+<ul>
+    {% if object.leaders.values %}<li>Leader of <ul>{% for group in object.leaders.values %}
+    <li>{{ group.name }}</li>{% endfor %}</ul></li>{% endif %}
+    {% if object.members.values %}<li>Member of <ul>{% for group in object.members.values %}
+    <li>{{ group.name }}</li>{% endfor %}</ul></li>{% endif %}
+</ul>
+{% endif %}
+
+{% if object.talents.values %}<h3>Talents</h3>
+    <ul>{% for talent in object.talents.values %}
+        <li>{{ talent }}</li>{% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}

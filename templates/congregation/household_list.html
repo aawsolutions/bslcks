@@ -10,9 +10,10 @@
 
 
 {% block content %}
-  <ul class="link_list">
-    {% for house in object_list %}
-    <li><a href="{{ house.get_absolute_url }}" title="Household detail">{{ house }}</a></li>
-    {% endfor %}
-  </ul>
+        {% if has_previous %}<a href="?page={{  previous }}">&#060;&#060; previous</a> || {% endif %}{% if has_next %}<a href="?page={{ next }}">next &#062;&#062;</a>{% endif %}
+        <ul class="link_list"> {% for house in object_list %}
+            <li><a href="{{ house.get_absolute_url }}" title="Household detail">{{ house }}</a></li>
+            {% endfor %}
+        </ul>
+
 {% endblock %}
