@@ -11,6 +11,10 @@
 
 
 {% block content %}
+{% if object.picture %}
+    <img src="{{ MEDIA_URL }}{{ object.picture.image }}" title="{{ object }}" />
+{% endif %}
+
 <h3>Contact Info</h3>
 <ul>
     {% if object.landline %}<li> Landline: {{ object.landline }}</li>{% endif %}

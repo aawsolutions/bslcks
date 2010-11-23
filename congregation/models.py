@@ -5,6 +5,7 @@ from django.db.models import Count
 from django.contrib.localflavor.us.models import *
 from django.db import models
 
+import re
 from datetime import datetime
 from dateutil.relativedelta import *
 
@@ -54,6 +55,11 @@ class Household(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    @property
+    def last_name(self):
+        lname = re.search(r'[^ ]*$',self.name)
+        return self.name[lname.start():lname.end()]
 
     @permalink
     def get_absolute_url(self):
