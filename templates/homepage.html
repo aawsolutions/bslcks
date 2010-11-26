@@ -42,7 +42,7 @@
 
     <div class="grid_6">  
       <div id="slider"> 
-          <ul>{% fetch_posts "8" %}{% for post in posts %}
+          <ul>{% fetch_posts "9" %}{% for post in posts %}
                 <li>
                     <h1>{{ post.title }}</h1>
                     <div class="slider_message">
@@ -80,7 +80,7 @@
         <a href="http://www.twitter.com/bslcks"><img src="{{ MEDIA_URL }}images/icons/twitter.jpg" alt="twitter feed"/></a>
         <a href="/flickr"><img src="{{ MEDIA_URL }}images/icons/flickr.png" alt="flickr feed"/></a>
         <a href="/youtube"><img src="{{ MEDIA_URL }}images/icons/youtube.jpg" alt="youtube channel"/></a>
-        <form action="/congregation/search" method="get">
+        <form action="{% url congregation_search %}" method="get">
             <div><input type="text" name="findperson" id="findperson" value=""/></div>
             <div><button type="submit">Go</button></div>
         </form>        

@@ -5,16 +5,17 @@
 
 
 {% block content_title %}
-  <h2>Congregation Members</h2>
+  <h2>{% if search_term %}Results for <strong>{{ search_term }}{% else %}Congregation Members{% endif %}</h2>
 {% endblock %}
 
 
 {% block content %}
+{% if not message %}
   <ul class="link_list">
     {% for person in object_list %}
     <li><a href="{{ person.get_absolute_url }}" title="View posts in this category">{{ person }}</a></li>
     {% endfor %}
   </ul>
         {% if has_previous %}<a href="?page={{  previous }}">&#060;&#060; previous</a> || {% endif %}{% if has_next %}<a href="?page={{ next }}">next &#062;&#062;</a>{% endif %}
-
+{% else %}<strong>{{ message }}</strong>{% endif %}
 {% endblock %}

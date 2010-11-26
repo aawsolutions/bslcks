@@ -51,6 +51,6 @@ urlpatterns = patterns('congregation.views',
         view='talents_detail',
         name='talents_detail'
     ),
-
+    url(r'^search/', view='search', name='congregation_search'),
 )
 
