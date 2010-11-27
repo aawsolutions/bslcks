@@ -107,11 +107,12 @@ ul {
         font-style: italic;
         padding: 5px;
         border: 1px solid gray;
-        width: auto;
+        width: 187px;
         color: gray;
     }
     .bigblock button {
-        margin-left: 2px;
+        margin-left: 18px;
+        height: 28px;
     }
 
 

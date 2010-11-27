@@ -20,6 +20,7 @@
     {% if object.landline %}<li> Landline: {{ object.landline }}</li>{% endif %}
     {% if object.cellphone %}<li>Cellphone: {{ object.cellphone }}</li>{% endif %}
     {% if object.email %}<li>Email: <a href="mailto:{{ object.email }}">{{ object.email }}</a></li>{% endif %}
+    {% if object.mailbox_set.values %}<li>Church Mailbox # {% for box in  object.mailbox_set.values %}{{box.number}}{% endfor %}</li>{% endif %}
 </ul>
 
 <h3>About</h3>

@@ -88,8 +88,7 @@
         <a href="/flickr"><img src="{{ MEDIA_URL }}images/icons/flickr.png" alt="flickr feed"/></a>
         <a href="/youtube"><img src="{{ MEDIA_URL }}images/icons/youtube.jpg" alt="youtube channel"/></a>
         {% if user.is_authenticated %}<form action="{% url congregation_search %}" method="get">
-            <div><input type="text" name="findperson" id="findperson" value="church directory search"/></div>
-            <div><button type="submit">Search</button></div>
+            <div class="buffed"><input type="text" name="findperson" id="findperson" value="church directory search"/><button type="submit">Search</button></div>
         </form>{% endif %}
    </div>
    <div class="clear"></div>
