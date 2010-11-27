@@ -28,6 +28,13 @@
                 endlink: '/news',
                 endlinktxt: 'all news'
     		});
+
+            $("#findperson").focus(function(){
+                if(this.value=='church directory search')
+                {
+                    this.value=''
+                }
+            });
 {% endblock %}
 
 {% block logo %}
@@ -80,10 +87,10 @@
         <a href="http://www.twitter.com/bslcks"><img src="{{ MEDIA_URL }}images/icons/twitter.jpg" alt="twitter feed"/></a>
         <a href="/flickr"><img src="{{ MEDIA_URL }}images/icons/flickr.png" alt="flickr feed"/></a>
         <a href="/youtube"><img src="{{ MEDIA_URL }}images/icons/youtube.jpg" alt="youtube channel"/></a>
-        <form action="{% url congregation_search %}" method="get">
-            <div><input type="text" name="findperson" id="findperson" value=""/></div>
-            <div><button type="submit">Go</button></div>
-        </form>        
+        {% if user.is_authenticated %}<form action="{% url congregation_search %}" method="get">
+            <div><input type="text" name="findperson" id="findperson" value="church directory search"/></div>
+            <div><button type="submit">Search</button></div>
+        </form>{% endif %}
    </div>
    <div class="clear"></div>
 {% endblock %}

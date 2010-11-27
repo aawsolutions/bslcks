@@ -70,7 +70,7 @@ class PostNode(template.Node):
             except:
                 temp = ''
         else:
-            context['posts'] = Post.objects.filter(publish__lte=datetime.now()).filter(status=2).exclude(categories__slug='emergency-notification').exclude(categories__slug='front-page').order_by('-publish')[0:self.fetch_string]
+            context['posts'] = Post.objects.filter(publish__lte=datetime.now()).filter(categories__slug='front-page').filter(status=2).exclude(categories__slug='emergency-notification').order_by('-publish')[0:self.fetch_string]
         return ''
 
 @register.tag(name="fetch_posts")

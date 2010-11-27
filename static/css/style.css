@@ -1,21 +1,29 @@
 body {
-   font-family: Cantarell, Candara, "Helvetica Neue", Arial, sans-serif;
-   color: #808080;
+    font-family: Cantarell, Candara, "Helvetica Neue", Arial, sans-serif;
+    text-shadow: 15px 15px 15px #dddddd;
+    color: #808080;
 }
 
 h1 {
-   font-family: Vollkorn, Constantia, Georgia, serif;
-   font-weight: normal;
-   color: #044959;
+    font-family: Vollkorn, Constantia, Georgia, serif;
+    font-weight: normal;
+    text-shadow: none;
+    color: #044959;
+}
+h2 {
+    text-shadow: none;
+}
+h3 {
+    text-shadow: none;
 }
 
 a {
-   color: #8F0303;
+    color: #8F0303;
 }
 
 a:hover {
-   color: #C75C5C;
-   text-decoration: none;
+    color: #C75C5C;
+    text-decoration: none;
 }
 
     button {
@@ -37,15 +45,23 @@ a:hover {
         margin: 1px;
     }
 
+ul {
+    list-style: square;
+}
 .emergency {
     background: #8F0303;
     padding: 5px;
     color: #fff;
     font-size: 1.25em;
 }
-.emergency a{
+.emergency a {
     color: #fff;
     text-decoration: underline;
+}
+.emergency a:hover {
+    text-decoration: none;
+    color: #C75C5C;
+
 }
 
 .top {
@@ -53,13 +69,13 @@ a:hover {
 }
 
 .buffed {
-  margin-top: 10px;
-  margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Special block styling */
 .logo {
-   letter-spacing: 2px;
+    letter-spacing: 2px;
 }
     .logo p { 
         text-align: right;
@@ -87,10 +103,22 @@ a:hover {
         margin-right: 15px;
     }
 
+    .bigblock input {
+        font-style: italic;
+        padding: 5px;
+        border: 1px solid gray;
+        width: auto;
+        color: gray;
+    }
+    .bigblock button {
+        margin-left: 2px;
+    }
+
+
 .mediaicons img {
-   margin-right: 20px;
-   margin-top: 5px;
-   width: 50px;
+    margin-right: 20px;
+    margin-top: 5px;
+    width: 50px;
 }
 
 .toplink {
@@ -126,6 +154,7 @@ a:hover {
 #footer {
     margin-top: 20px;
     height: 120px;
+    text-shadow: 15px 15px 15px #044959;
     background: #044959;
     color: #fff;
     width: 100%;
@@ -395,3 +424,12 @@ a:hover {
         margin: 5px 30px 5px 30px;
     }
     
+.congregation {
+}
+    .congregation img {
+        float: right;
+    }
+
+.leftnav img {
+    margin-bottom: 45px;
+}
