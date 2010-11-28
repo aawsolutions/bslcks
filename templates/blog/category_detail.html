@@ -13,13 +13,15 @@
 
 
 {% block content %}
-  <div class="post_list grid_8">
-    {% for post in object_list %}
-    <div>
-      <p class="date">{{ post.publish|date:"F jS Y" }}</p>
+  <div class="list post_list grid_8">    {% for post in object_list %}
+    <div class="item">
+      <p class="date">{{ post.publish|date:"F d, Y" }}</p>
       <h3 class="title"><a href="{{ post.get_absolute_url }}" title="{% trans "View this post" %}">{{ post.title }}</a></h3>
       <p class="tease">{{ post.tease|safe }}</p>
-    </div>
-    {% endfor %}
-  </div>
-{% endblock %}
+    </div>                               {% endfor %}
+  </div>                                 {% if is_paginated %}
+  <p class="pagination">
+    {% if has_next %}    <a class="older" href="?page={{ next }}" title="{% trans "View older posts" %}">{% trans "Older" %}</a>    {% endif %}
+    {% if has_next and has_previous %} | {% endif %}    {% if has_previous %}
+    <a class="newer" href="?page={{ previous }}" title="{% trans "View newer posts" %}">{% trans "Newer" %}</a>    {% endif %}
+  </p>                                   {% endif %}{% endblock %}

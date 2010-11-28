@@ -1,20 +1,12 @@
 body {
-    font-family: Cantarell, Candara, "Helvetica Neue", Arial, sans-serif;
-    text-shadow: 15px 15px 15px #dddddd;
+    font-family: "Droid Sans", Cantarell, Candara, "Helvetica Neue", Arial, sans-serif;
     color: #808080;
 }
 
 h1 {
     font-family: Vollkorn, Constantia, Georgia, serif;
     font-weight: normal;
-    text-shadow: none;
     color: #044959;
-}
-h2 {
-    text-shadow: none;
-}
-h3 {
-    text-shadow: none;
 }
 
 a {
@@ -53,8 +45,6 @@ ul {
     padding: 5px;
     color: #fff;
     font-size: 1.25em;
-    text-shadow: 4px 4px 4px #8F0303;
-
 }
 .emergency a {
     color: #fff;
@@ -157,7 +147,6 @@ ul {
 #footer {
     margin-top: 20px;
     height: 120px;
-    text-shadow: 15px 15px 15px #044959;
     background: #044959;
     color: #fff;
     width: 100%;
@@ -281,7 +270,7 @@ ul {
         color: gray;
     }
 
-    .footnotes {
+    .footnotes, .footnote {
         font-family: Arial, sans-serif;
         font-size: .75em;
     }
