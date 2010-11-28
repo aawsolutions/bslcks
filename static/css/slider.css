@@ -11,7 +11,7 @@
 /* Easy Slider */
     #slider {
         vertical-align: middle;
-        background-image: url('http://static.bslcks.info/images/slidebg.jpg');
+        background-image: url('http://static.bslcks.info/images/slidebg-angle.jpg');
 
     }
     #slider h1 {
@@ -34,6 +34,7 @@
         opacity: .8;
         filter:alpha(opacity=80);
         padding: 10px;
+
     }
     .slider_message {
         background: #000;
@@ -41,6 +42,7 @@
         opacity: .8;
         filter:alpha(opacity=80);
         padding: 10px;
+        text-shadow: 15px 15px 15px #000;
     }
 
     #slider a {
@@ -62,7 +64,7 @@
 			entire slider area will adjust according to the parameters provided here
 		*/ 
 		width:470px;
-		height: 175px;
+		height: 202px;
 		overflow:hidden; 
 		}	
 	#prevBtn, #nextBtn,

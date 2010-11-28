@@ -39,7 +39,7 @@
 
 {% block logo %}
     <div class="logo grid_6">
-        <a href="/"><img src="{{ MEDIA_URL }}images/logo-460.png" alt="return home"/></a>
+        <a href="/"><img src="{{ MEDIA_URL }}images/logo-460-slogan.png" alt="return home"/></a>
         <p><a href="/map" title="Click here for Map and Directions">13145 Blackbob Road | Olathe, KS 66062 | 913.780.6023</a></p>
 
     </div>
@@ -53,7 +53,7 @@
                 <li>
                     <h1>{{ post.title }}</h1>
                     <div class="slider_message">
-                        {% if user.is_authenticated %}{{ post.body|striptags|truncatechars:280 }}{% else %}{{ post.body|striptags|privatize|truncatechars:280 }}{% endif %} <a href='{{post.get_absolute_url }}'>read more</a>
+                        {% if user.is_authenticated %}{{ post.body|striptags|truncatechars:330 }}{% else %}{{ post.body|striptags|privatize|truncatechars:330 }}{% endif %} <a href='{{post.get_absolute_url }}'>read more</a>
                     </div>
                 </li>{% endfor %}
           </ul> 

@@ -53,6 +53,8 @@ ul {
     padding: 5px;
     color: #fff;
     font-size: 1.25em;
+    text-shadow: 4px 4px 4px #8F0303;
+
 }
 .emergency a {
     color: #fff;
