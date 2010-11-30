@@ -2,16 +2,18 @@
 
 {% load markup mytags %}
 
-{% block extra_head %}
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/easySlider1.7.js"></script>
-
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/slider.css" /> {% if season_color %}
-    <style type="text/css">
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/slider.css" /> 
+    {% if season_color %}    <style type="text/css">
         .liturgi-cal {
             width: 100%;
             background: {{ season_color }};
         }
-    </style>                                                                                      {% endif %}
+    </style> {% endif %}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/easySlider1.7.js"></script>
 {% endblock %}
 
 {% block emergency_message %}

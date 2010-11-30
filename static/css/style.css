@@ -1,6 +1,17 @@
+@font-face {
+font-family: GraublauWeb;
+src: url("GraublauWeb.otf") format("opentype");
+}
+@font-face {
+font-family: GraublauWeb;
+font-weight: bold;
+src: url("path-to-the-font-file/GraublauWebBold.otf") format("opentype");
+}
+
+
 body {
-    font-family: "Droid Sans", Cantarell, Candara, "Helvetica Neue", Arial, sans-serif;
-    color: #808080;
+    font-family: "Droid Sans", Candara, "Helvetica Neue", Arial, sans-serif;*/
+    color: #424242;
 }
 
 h1 {
@@ -68,6 +79,7 @@ ul {
 /* Special block styling */
 .logo {
     letter-spacing: 2px;
+    font-weight: strong;
 }
     .logo p { 
         text-align: right;
@@ -80,6 +92,7 @@ ul {
 
 .bigblock {
     font-size: 1.3em;
+    color: #808080;
     /*height: 180px;*/
 }
     .bigblock h1 {
@@ -100,7 +113,7 @@ ul {
         padding: 5px;
         border: 1px solid gray;
         width: 187px;
-        color: gray;
+        color: #424242;
     }
     .bigblock button {
         margin-left: 18px;
@@ -345,7 +358,6 @@ ul {
     margin-bottom: 5px;    
 }
 .body {
-    color: #424242;
     margin-bottom: 15px;    
     margin-left: 20px;
 }
