@@ -1,4 +1,4 @@
-{% extends "blog/base_blog.html" %}  {% load i18n mytags markup %}
+{% extends "blog/base_blog.html" %}  {% load i18n mytags process_flat markup %}
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block meta_keywords %},{{ object.tags }}{% endblock %}
@@ -22,9 +22,9 @@
 
   <div class="body">
     {% if user.is_authenticated %}
-        {{ object.body|render_inlines|markdown }}
+        {{ object.body|render_inlines|parse_blocks|markdown }}
     {% else %}
-        {{ object.body|render_inlines|privatize|markdown }}
+        {{ object.body|render_inlines|parse_blocks|privatize|markdown }}
     {% endif %}
   </div>
 

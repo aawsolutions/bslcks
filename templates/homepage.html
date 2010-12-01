@@ -48,14 +48,13 @@
     <div class="grid_6 toplink">
         <a href="/mission">Mission/Ministry</a><a href="/growth">Growth</a><a href="/youth">Youth</a><a href="/preschool">Preschool</a>
     </div>
-
     <div class="grid_6">  
       <div id="slider"> 
           <ul>{% fetch_posts "9" %}{% for post in posts %}
                 <li>
                     <h1>{{ post.title }}</h1>
                     <div class="slider_message">
-                        {% if user.is_authenticated %}{{ post.body|striptags|truncatechars:330 }}{% else %}{{ post.body|striptags|privatize|truncatechars:330 }}{% endif %} <a href='{{post.get_absolute_url }}'>read more</a>
+                        {% if user.is_authenticated %}{{ post.body|markdown|striptags|truncatechars:330 }}{% else %}{{ post.body|markdown|striptags|privatize|truncatechars:330 }}{% endif %} <a href='{{post.get_absolute_url }}'>read more</a>
                     </div>
                 </li>{% endfor %}
           </ul> 

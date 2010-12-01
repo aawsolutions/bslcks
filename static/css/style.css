@@ -136,7 +136,7 @@ ul {
 }
     .toplink a {
         text-decoration: none;
-        margin-right: 35px;
+        margin-right: 30px;
     }
     .toplink a:hover {
         color: #fff;
@@ -178,6 +178,10 @@ ul {
     .f_links {
        padding-top: 5px;
     }
+        .f_links img {
+            margin-right: 10px;
+            float: left;
+        }
     .f_info {
        text-align: right;
        padding-top: 5px;
@@ -266,12 +270,12 @@ ul {
 
 
     .quote {
-        background: url('/images/lqm.png') no-repeat left top;
+        text-indent: -1em;
     }
     .sub_page_content blockquote {
+        background: url('/images/lqm.png') no-repeat left top;
         margin-left: 30px;
         padding-left: 1em;
-        text-indent: -1em;
         color: #628703; 
     }
     .lastq {
@@ -282,7 +286,11 @@ ul {
     .verse-num {
         color: gray;
     }
-
+    .psalm-title {
+        font-size: .9em;
+        font-style: italic;
+        margin-bottom: 5px;
+    }
     .footnotes, .footnote {
         font-family: Arial, sans-serif;
         font-size: .75em;
@@ -436,4 +444,12 @@ ul {
 
 .leftnav img {
     margin-bottom: 45px;
+}
+
+.download-lnk a {
+    padding-left: 21px;
+    background: #fff url('/images/download_arrow.png') no-repeat left center;
+}
+.download-lnk a:hover {
+    background: #fff url('/images/download_arrow_down.png') no-repeat left center;
 }

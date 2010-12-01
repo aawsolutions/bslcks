@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.generic import list_detail
 from django.template import RequestContext
+
 from congregation.models import *
 
 from apikeys.fetch import allkeys
@@ -81,12 +82,18 @@ def household_detail(request, slug, **kwargs):
 
 @login_required
 def person_detail(request, slug, **kwargs):
-    return list_detail.object_detail(
-        request,
-        queryset=Person.objects.all(),
-        slug=slug,
-        **kwargs
-    )
+    extra = {}
+    if request.method == 'GET':
+        if request.user.get_profile().slug == slug:
+            extra['this_is_you'] = True
+            extra['editme'] = request.GET.get('edit', False)
+        return list_detail.object_detail(
+            request,
+            queryset=Person.objects.all(),
+            slug=slug,
+            extra_context=extra,
+            **kwargs
+        )
 
 @login_required
 def group_detail(request, slug, **kwargs):
@@ -155,5 +162,3 @@ def search(request, template_name='congregation/person_list.html'):
             message = 'Search term was too vague. Please try again.'
             context = {'message':message}
     return render_to_response(template_name, context, context_instance=RequestContext(request))
-
-

@@ -1,0 +1,6 @@
+{% load markup %}
+<div class="devotional_thoughts">
+    <p class="download-lnk"><a href="{{ object.file.url }}" target=_BLANK>Click here to download</a><br/>
+    {{ object.description|markdown }}</p>
+</div>
+

@@ -5,7 +5,7 @@
 
 
 {% block content_title %}
-  <h2>{% if search_term %}Results for <strong>{{ search_term }}{% else %}Congregation Members{% endif %}</h2>
+  <h2>{% if search_term %}Results for <strong>{{ search_term }}</strong>{% else %}Congregation Members{% endif %}</h2>
 {% endblock %}
 
 
@@ -13,7 +13,7 @@
 {% if not message %}
   <ul class="link_list">
     {% for person in object_list %}
-    <li><a href="{{ person.get_absolute_url }}" title="View posts in this category">{{ person }}</a></li>
+    <li><a href="{{ person.get_absolute_url }}" title="View individual details">{{ person }}</a></li>
     {% endfor %}
   </ul>
         {% if has_previous %}<a href="?page={{  previous }}">&#060;&#060; previous</a> || {% endif %}{% if has_next %}<a href="?page={{ next }}">next &#062;&#062;</a>{% endif %}

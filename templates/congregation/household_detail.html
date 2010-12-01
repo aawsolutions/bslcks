@@ -21,7 +21,7 @@
 </ul>
 
 <h3>Members</h3>
-<ul>{% for person in object.person_set.all %}
+<ul>{% for person in object.person_set.all|dictsort:"directory_report_order" %}
     <li><a href="{{ person.get_absolute_url }}">{{ person }}</a></li>{% endfor %}
 </ul>    
 

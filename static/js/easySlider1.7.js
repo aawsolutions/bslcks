@@ -101,6 +101,7 @@
 				for(var i=0;i<s;i++){						
 					$(document.createElement("li"))
 						.attr('id',options.numericId + (i+1))
+                        .attr('style', 'display: inline;')
 						.html('<a rel='+ i +' href=\"javascript:void(0);\">'+ (i+1) +'</a>')
 						.appendTo($("#"+ options.numericId))
 						.click(function(){							

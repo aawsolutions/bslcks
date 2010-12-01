@@ -63,7 +63,7 @@
 			define width and height of list item (slide)
 			entire slider area will adjust according to the parameters provided here
 		*/ 
-		width:470px;
+		width:460px;
 		height: 202px;
 		overflow:hidden; 
 		}	
@@ -101,7 +101,7 @@
         width: 450px;
 		}
 	ol#controls li{
-		margin:0 10px 0 0; 
+		margin:0 9px 0 0; 
 		padding:0;
 		float:left;
 		list-style:none;
@@ -116,11 +116,11 @@
 		border:1px solid #ccc;
         background: #044959;
         color: #fff;
-        display: inline;
 /*		background:#DAF3F8;
 		color:#555;*/
 		padding:0 10px;
 		text-decoration:none;
+        display: inline;
 		}
 	ol#controls li.current a{
 		background:#628703;
