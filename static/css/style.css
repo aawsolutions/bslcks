@@ -112,19 +112,23 @@ ul {
         font-style: italic;
         padding: 5px;
         border: 1px solid gray;
-        width: 187px;
+        width: 205px;
         color: #424242;
     }
     .bigblock button {
-        margin-left: 18px;
+        float: right;
+        margin-top: 2px;
         height: 28px;
     }
 
 
 .mediaicons img {
-    margin-right: 20px;
+    margin-right: 29px;
     margin-top: 5px;
     width: 50px;
+}
+.mediaicons_last img {
+    margin-right: 0px;
 }
 
 .toplink {

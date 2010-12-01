@@ -2,7 +2,7 @@
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block meta_keywords %},{{ object.tags }}{% endblock %}
-{% block meta_author %}{{ object.author.get_profile }}{% endblock %}
+{% block meta_author %}{% if object.author %}{{ object.author.get_profile }}{% else %}BSLCKS{% endif %}{% endblock %}
 {% block meta_description %}{% if object.tease %}{{ object.tease }}{% else %}{{ object.body|striptags|truncatewords:50 }}{% endif %}{% endblock %}
 
 {% block content %}
