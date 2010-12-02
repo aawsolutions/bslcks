@@ -9,8 +9,6 @@ urlpatterns = patterns('',
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
 
-    (r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html',}),
-    (r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'template_name': 'logout.html'}),
 
     (r'^photos/', include('photologue.urls')),
     (r'^congregation/', include('congregation.urls')),
@@ -24,6 +22,13 @@ urlpatterns = patterns('',
     (r'^dailybread/', include('dailybread.urls')),
 
     (r'^rss/', LatestNewsFeed()),
+)
+
+urlpatterns += patterns('django.contrib.auth.views',
+    url(r'^accounts/login/$', 'login', kwargs={'template_name': 'accounts/login.html',}, name='login'),
+    url(r'^accounts/logout/$', 'logout', kwargs={'template_name': 'accounts/logout.html'}, name='logout'),
+    url(r'^accounts/pwchange/$', 'password_change', kwargs={'template_name': 'accounts/pwchange.html'}, name='change_password'),
+    url(r'^accounts/pwchange/success/$', 'password_change_done', kwargs={'template_name': 'accounts/success.html'}, name='password_change_success')
 )
 
 urlpatterns += patterns('bslcks.views',

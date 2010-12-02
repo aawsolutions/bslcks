@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block logo %}
+    <div class="logo grid_6">
+        <a href="/"><img src="{{ MEDIA_URL }}images/logo-460.png" alt="return home"/></a>
+        <p><a href="/map" title="Click here for Map and Directions">13145 Blackbob Road | Olathe, KS 66062 | 913.780.6023</a></p>
+
+    </div>
+{% endblock %}
+
+{% block body %}
+
+    <div class="bigblock grid_6"> {% if form.errors %}
+        <div class="error_message">Username or Password were incorrect, please try again</div>{% endif %}
+        <div class="loginform">
+            <form method="post" action="{% url django.contrib.auth.views.login %}">
+            {% csrf_token %}
+            <ul>            
+                {{ form.as_p }}
+            </ul>
+            <button type="submit" value="login">Login</button>
+            <input type="hidden" name="next" value="/" />
+
+            </form>
+        </div>
+        
+
+    </div>
+
+    <div class="clear"></div>
+
+
+
+
+{% endblock %}
+

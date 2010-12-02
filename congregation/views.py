@@ -10,10 +10,9 @@ from apikeys.fetch import allkeys
 
 @login_required
 def congregation_home(request, **kwargs):
+    
 
-    message = 'Hello World'
     return render_to_response('congregation/congregation_home.html', {
-        'Message': message,
         'keys': allkeys(request.META['HTTP_HOST']),
     },context_instance=RequestContext(request))
 

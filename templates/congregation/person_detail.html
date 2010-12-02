@@ -7,7 +7,7 @@
 
 {% block content_title %}
     <h2>{% if object.prefix %}{{ object.prefix.prefix }} {% endif %}{{ object }}</h2>
-    {% if this_is_you %}<p>Hey, this is you!{% endif %}{% if editme %}  And you want to edit!{% endif %}</p>
+    {% if this_is_you %}<p><a href="{% url change_password %}">Change your password</a></p>{% endif %}
 {% endblock %}
 
 
