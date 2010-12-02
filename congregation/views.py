@@ -157,7 +157,7 @@ def search(request, template_name='congregation/person_list.html'):
         cleaned_search_term = cleaned_search_term.strip()
         if len(cleaned_search_term) != 0:
             people_list = Person.objects.filter(Q(first_name__icontains=cleaned_search_term) | Q(last_name__icontains=cleaned_search_term) | Q(preferred_first_name__icontains=cleaned_search_term))
-            context = {'object_list': people_list, 'search_term':search_term}
+            context = {'object_list': people_list, 'search_term':search_term, }
         else:
             message = 'Search term was too vague. Please try again.'
             context = {'message':message}

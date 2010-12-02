@@ -12,7 +12,7 @@ urlpatterns = patterns('congregation.views',
         view='household_list', 
         name='households_list'),
 
-    url(r'^housholds/(?P<slug>[-\w]+)/$',
+    url(r'^households/(?P<slug>[-\w]+)/$',
         view='household_detail',
         name='household_detail'
     ),

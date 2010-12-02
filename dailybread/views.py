@@ -34,7 +34,10 @@ class Daily:
     passage = '' 
 
 def daily_bread_index(request):
-    return render_to_response('dailybread.html', { 'motd': 'Hello World', })
+    return render_to_response('dailybread.html', { 
+        'motd': 'Hello World', 
+        'today': '',
+        }, context_instance=RequestContext(request))
 
 def daily_bread_today(request):
     passage = ''

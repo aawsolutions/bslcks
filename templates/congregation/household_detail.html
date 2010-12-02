@@ -12,17 +12,17 @@
 
 {% block content %}
 {% if object.picture %}
-    <img src="{{ MEDIA_URL }}{{ object.picture.image }}" title="{{ object }}" />
+    <img src="{{ object.picture.image.url }}" height="250px" title="{{ object }}" />
 {% endif %}
 <h3>Contact Info</h3>
 <ul>
     {% if not object.unlisted_number %}<li>Phone: {{ object.household_phone }}</li>{% endif %}
-    {% if object.address %}<li>Address: {{ object.address }} {{object.apartment }}, {{ object.state }} {{ object.zipcode }} </li>{% endif %}
+    {% if object.address %}<li>Address: {{ object.full_address }}</li>{% endif %}
 </ul>
 
 <h3>Members</h3>
 <ul>{% for person in object.person_set.all|dictsort:"directory_report_order" %}
-    <li><a href="{{ person.get_absolute_url }}">{{ person }}</a></li>{% endfor %}
+    <li><a href="{{ person.get_absolute_url }}">{{ person }}</a>{% if person.age < 18 %} ({{ person.age }}){% endif %}</li>{% endfor %}
 </ul>    
-
+<p>For personal contact details, click the individual name</p>
 {% endblock %}

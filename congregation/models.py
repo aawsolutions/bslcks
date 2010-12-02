@@ -65,6 +65,21 @@ class Household(models.Model):
     def get_absolute_url(self):
         return ('household_detail', None, {'slug': self.slug}) 
 
+    @property
+    def full_address(self):
+        addy = ''
+        if self.address:
+            addy += self.address
+            addy += ' '
+        if self.apartment:
+            addy += self.apartment
+            addy += ', '
+        else:
+            addy += ', '
+        if self.zipcode:
+            addy += self.zipcode
+        return addy
+
 class Prefix(models.Model):
     prefix = models.CharField(max_length=20)
     initials = models.CharField(max_length=5)
