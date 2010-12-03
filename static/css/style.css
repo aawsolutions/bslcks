@@ -459,3 +459,8 @@ ul {
 .download-lnk a:hover {
     background: #fff url('/images/download_arrow_down.png') no-repeat left center;
 }
+
+.link_list img {
+    vertical-align: middle;
+    float: none;
+}

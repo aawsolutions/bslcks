@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db import IntegrityError
 from congregation.models import *
 from photologue.models import *
 from random import *
@@ -38,22 +39,39 @@ def create_user(username, password):
     temp = User()
     temp.username = username
     temp.set_password(password)
+    temp.save()
+    return temp
 
 def user_generator():
     mboxes = Mailbox.objects.all().order_by('number')
+    pdubs = open('/home/apt9online/src/bslcks/private/pdubs.txt','w')
     for mbox in mboxes:
-        print '\nBox #%s\nTry out our new website at its test environment: www.bslcks.info\nYou can change your password after logging in.  \nSometime in the next couple weeks we\'ll move from the testing location over to the usual bslcks.org \nYour account will work there too.\n\t<username>:<password>' % mbox.number
+        pdubs.write('\nBox #%s\n\t<username>:<password>\n' % mbox.number)
         occupants = mbox.occupants.all().order_by('directory_report_order', 'birth_date')
         for person in occupants:
             if person.user:
-                print '\t%s already has a user account' % person
+                pdubs.write('\t%s try in box #' % person)
+                for box in person.mailbox_set.all():
+                    if box.number != mbox.number:
+                        pdubs.write('%s, ' % box.number)
+                pdubs.write('\n')
                 continue
             else:
                 username = person.slug
-                password = pwd_generator()
-                print '\t%s:%s' % (username, password)
-        
-                     
+                password = pwd_generator()[0:6]
+                try:
+                    person.user = create_user(username, password)
+                    person.save()
+                    pdubs.write('\t%s:%s\n' % (username, password))
+                except IntegrityError:
+                    pdubs.write('\t%s may have info in box' % person) 
+                    if person.mailbox_set.all().count() >0:
+                        for box in person.mailbox_set.all():
+                            pdubs.write(' %s, ' % box.number)
+                        pdubs.write('\n')
+                        
+    pdubs.close()
+
 def hh_pic_assign():
     pics = Photo.objects.all()
     hh = Household.objects.all()

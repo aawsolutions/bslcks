@@ -133,7 +133,7 @@ which|while|whither|who|whoever|whole|whom|whose|why|will|with|within|without|wo
 yourselves)\b"""
 
 @login_required
-def search(request, template_name='congregation/person_list.html'):
+def search(request, template_name='congregation/search_results.html'):
     """
     Search the congregation.
 
@@ -154,9 +154,24 @@ def search(request, template_name='congregation/person_list.html'):
         search_term = '%s' % request.GET['findperson']
         cleaned_search_term = stop_word_list.sub('', search_term)
         cleaned_search_term = cleaned_search_term.strip()
+        terms = cleaned_search_term.split(' ')
         if len(cleaned_search_term) != 0:
-            people_list = Person.objects.filter(Q(first_name__icontains=cleaned_search_term) | Q(last_name__icontains=cleaned_search_term) | Q(preferred_first_name__icontains=cleaned_search_term))
-            context = {'object_list': people_list, 'search_term':search_term, }
+            people_list = Person.objects.filter(
+                Q(first_name__icontains=cleaned_search_term) | 
+                Q(last_name__icontains=cleaned_search_term) | 
+                Q(preferred_first_name__icontains=cleaned_search_term) 
+            )
+            if len(people_list) < 1:
+                people_list = Person.objects.filter(
+                    Q(first_name__iregex=r'(' + '|'.join(terms) + ')') | Q(preferred_first_name__iregex=r'(' + '|'.join(terms) + ')')
+                    ).filter(last_name__iregex=r'(' + '|'.join(terms) + ')')
+                if len(people_list)<1:
+                    message = 'no match found for '
+                else:
+                    message = 'matches found for '
+            else:
+                message = 'matches found for '
+            context = {'object_list': people_list, 'message': message, 'search_term':search_term, }
         else:
             message = 'Search term was too vague. Please try again.'
             context = {'message':message}
