@@ -1,6 +1,11 @@
 from django.contrib import admin
 from congregation.models import *
 
+class UserLoginAdmin(admin.ModelAdmin):
+    order_by = ('timestamp',)
+    list_filter = ('timestamp',)
+admin.site.register(UserLogin, UserLoginAdmin)
+
 class TalentAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 admin.site.register(Talents, TalentAdmin)

@@ -46,7 +46,7 @@
 
     </div>
     <div class="grid_6 toplink">
-        <a href="/mission">Mission/Ministry</a><a href="/growth">Growth</a><a href="/youth">Youth</a><a href="/preschool">Preschool</a>
+        <a href="/mission-ministry/">Mission/Ministry</a><a href="/growth">Growth</a><a href="/youth">Youth</a><a href="/preschool">Preschool</a>
     </div>
     <div class="grid_6">  
       <div id="slider"> 
@@ -90,7 +90,7 @@
         <a class="mediaicons_last" href="/youtube"><img src="{{ MEDIA_URL }}images/icons/youtube.jpg" alt="youtube channel"/></a>
         {% if user.is_authenticated %}<form action="{% url congregation_search %}" method="get">
             <div class="buffed"><input type="text" name="findperson" id="findperson" value="church directory search"/><button type="submit">Search</button></div>
-        </form>{% endif %}
+        </form>{% else %}<h4><a href="/welcome/">Welcome to Beautiful Savior!</a></h4><p><strong>a message from Pastor Schultz</strong></p>{% endif %}
    </div>
    <div class="clear"></div>
 {% endblock %}

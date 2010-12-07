@@ -1,24 +1,22 @@
 {% extends "base.html" %}
-
+{% block meta_description %}{% endblock %}
 {% block logo %}        
 
                         <div class="grid_4 leftnav">
 
-                        <a href="/"> <img src="{{ MEDIA_URL }}images/logo-300.png" alt="return home" /> </a>
-                        {% block leftnav %}
-
-                        <div class="bigblock">
-                            <h1>Worship with us!</h1>
-                                <p>
-                                  <strong>Sunday Worship</strong> morning services @ 8:00am, 10:45am, and 6:00pm <br/>
-                                  <strong>Family Education Hour</strong> @ 9:30am
-                                </p>
-                                <ul>
-                                    <li><a href="/">Home</a></li>
-                                    <li><a href="/map">Map &amp; Directions</a></li>
-                                    <li><a href="/staff">Staff</a></li>
-                                </ul>
-                        </div>{% endblock %}
+                            <a href="/"><img src="{{ MEDIA_URL }}images/logo-300.png" alt="return home" /></a>
+                        {% block leftnav %}                             <div class="bigblock">
+                                <h1>Worship with us!</h1>
+                                    <p>
+                                      <strong>Sunday Worship</strong> morning services @ 8:00am, 10:45am, and 6:00pm <br/>
+                                      <strong>Family Education Hour</strong> @ 9:30am
+                                    </p>
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/map">Map &amp; Directions</a></li>
+                                        <li><a href="/staff">Staff</a></li>
+                                    </ul>
+                            </div>{% endblock %}
                     </div>{% endblock %}
 {% block content %}
 {% endblock %}

@@ -4,12 +4,34 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from django.contrib.localflavor.us.models import *
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
+from django.core.signals import request_finished
 
 import re
 from datetime import datetime
 from dateutil.relativedelta import *
 
 from photologue.models import Photo
+
+class UserLogin(models.Model):
+    """Represent users' logins, one per record"""
+    user = models.ForeignKey(User)
+    timestamp = models.DateTimeField()
+
+    def __unicode__(self):
+        try:
+            p = self.user.get_profile()
+            return u'%s on %s' % (p, self.timestamp)
+        except:
+            return u'%s on %s' % (self.user, self.timestamp) 
+
+@receiver(pre_save, sender=User, dispatch_uid='LoginCounter')
+def user_presave(sender, instance, **kwargs):
+    if instance.last_login:
+        old = instance.__class__.objects.get(pk=instance.pk)
+        if instance.last_login != old.last_login:
+            instance.userlogin_set.create(timestamp=instance.last_login)
 
 
 class Talents(models.Model):

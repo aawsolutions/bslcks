@@ -3,6 +3,8 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.db.models import Q
 
+from django.views.generic import TemplateView
+
 from datetime import date
 
 from apikeys.fetch import allkeys

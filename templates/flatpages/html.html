@@ -1,14 +1,11 @@
 {% extends "base_site.html" %}
 
-{% load markup process_flat %}
+{% load process_flat %}
 
 {% block title %}{{ flatpage.title }}{% endblock %}
 
 {% block content %}
-<div class="grid_8 sub_page_content">
-{{ flatpage.content|parse_blocks|markdown }}
-
-</div>
+{{ flatpage.content|parse_blocks }}
 {% endblock %}
 
 {% block leftnav %}

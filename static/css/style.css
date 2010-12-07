@@ -109,7 +109,6 @@ ul {
     }
 
     .bigblock input {
-        font-style: italic;
         padding: 5px;
         border: 1px solid gray;
         width: 205px;
@@ -119,6 +118,9 @@ ul {
         float: right;
         margin-top: 2px;
         height: 28px;
+    }
+    .bigblock h4 {
+        margin-bottom: 5px;
     }
 
 
@@ -272,7 +274,18 @@ ul {
 
     }
 
+    .sub_page_content h4 {
+        margin-bottom: 5px;
+        font-size: 1em;
+    }
 
+    .legal-list {
+        text-indent: -1.2em;
+        list-style: none;
+    }
+        .legal-list li {
+            margin-bottom: 10px;
+        }
     .quote {
         text-indent: -1em;
     }
