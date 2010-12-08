@@ -5,13 +5,12 @@
 {% block body_class %}{{ block.super }} person_detail{% endblock %}
 
 
-{% block content_title %}
-    <h2>{% if object.prefix %}{{ object.prefix.prefix }} {% endif %}{{ object }}</h2>
-    {% if this_is_you %}<p><a href="{% url change_password %}">Change your password</a></p>{% endif %}
-{% endblock %}
 
 
 {% block content %}
+<div class="grid_8 sub_page_content">
+    <h2>{% if object.prefix %}{{ object.prefix.prefix }} {% endif %}{{ object }}</h2>
+    {% if this_is_you %}<p><a href="{% url change_password %}">Change your password</a></p>{% endif %}
 {% if object.picture %}
     <img src="{{ MEDIA_URL }}{{ object.picture.image }}" height="250px" title="{{ object }}" />
 {% endif %}
@@ -56,5 +55,5 @@
         <li>{{ talent }}</li>{% endfor %}
     </ul>
 {% endif %}
-
+</div>
 {% endblock %}

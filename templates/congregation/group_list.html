@@ -4,15 +4,13 @@
 {% block body_class %}{{ block.super }} group_list{% endblock %}
 
 
-{% block content_title %}
-  <h2>Groups</h2>
-{% endblock %}
-
-
 {% block content %}
+<div class="grid_8 sub_page_content">
+  <h2>Groups</h2>
   <ul class="link_list">
     {% for group in object_list %}
     <li><a href="{{ group.get_absolute_url }}" title="View posts in this category">{{ group }}</a></li>
     {% endfor %}
   </ul>
+</div>
 {% endblock %}

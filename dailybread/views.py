@@ -3,6 +3,8 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 
 from dailybread.models import Devotion
+from basic.bookmarks.models import Bookmark
+from sermons.models import Sermon
 
 from apikeys.fetch import allkeys
 from apikeys.models import Key
@@ -11,7 +13,6 @@ import datetime
 import urllib
 
 def ESVscripture(passage, domain):
-    print 'I AM HERE'
     try:
        key = Key.objects.filter(vendor__name='ESV.org').filter(site__domain=domain)[0].key
     except:
@@ -33,13 +34,7 @@ class Daily:
     devotion = Devotion
     passage = '' 
 
-def daily_bread_index(request):
-    return render_to_response('dailybread.html', { 
-        'motd': 'Hello World', 
-        'today': '',
-        }, context_instance=RequestContext(request))
-
-def daily_bread_today(request):
+def most_recent_devotion(request):
     passage = ''
     try:
         daily_devotion = Devotion.objects.filter(date__lte=datetime.date.today()).latest('date')
@@ -52,8 +47,33 @@ def daily_bread_today(request):
         dailybread.scripture = 'error'
         dailybread.thoughts = 'No daily devotions found'
 
+    return dailybread
+
+def daily_bread_index(request):
+    try:
+        bookmarks = Bookmarks.objects.filter(tags__icontains='dailybread')
+    except:
+        bookmarks = []
+    try:
+        sermon = Sermons.objects.filter(date__lte=datetime.date.today()).latest('date')[0]
+    except:
+        sermon = []
+    try:
+        daily_devotions = Devotion.objects.filter(date__lte=datetime.date.today()).latest('date')
+    except: 
+        daily_devotions = []
+
+    return render_to_response('dailybread_home.html', { 
+        'devotion_bookmarks': bookmarks,
+        'current_sermon': sermon,
+        'dailybread': devotions,
+        'keys': allkeys(request.META['HTTP_HOST']),
+    }, context_instance=RequestContext(request))
+
+def daily_bread_today(request):
+
     return render_to_response('dailybread.html', {
-        'dailybread': dailybread,
+        'dailybread': most_recent_devotion(request),
         'keys': allkeys(request.META['HTTP_HOST']),
     }, context_instance=RequestContext(request))
 

@@ -5,12 +5,11 @@
 {% block body_class %}{{ block.super }} household_detail{% endblock %}
 
 
-{% block content_title %}
-  <h2>{{ object }}</h2>
-{% endblock %}
 
 
 {% block content %}
+<div class="grid_8 sub_page_content">
+  <h2>{{ object }}</h2>
 {% if object.picture %}
     <img src="{{ object.picture.image.url }}" height="250px" title="{{ object }}" />
 {% endif %}
@@ -25,4 +24,5 @@
     <li><a href="{{ person.get_absolute_url }}">{{ person }}</a>{% if person.age < 18 and person.age > 0 %} ({{ person.age }}){% endif %}</li>{% endfor %}
 </ul>    
 <p>For personal contact details, click the individual name</p>
+</div>
 {% endblock %}

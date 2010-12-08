@@ -3,16 +3,13 @@
 {% block title %}Search Results{% endblock %}
 {% block body_class %}{{ block.super }} people_list{% endblock %}
 
-
-{% block content_title %}
-  <h2>{% if search_term %}Results</h2><h3><strong>{{ message }}'{{ search_term }}'</strong></h3>{% endif %}
-{% endblock %}
-
-
 {% block content %}
+<div class="grid_8 sub_page_content">
+  <h2>{% if search_term %}Results</h2><h3><strong>{{ message }}'{{ search_term }}'</strong></h3>{% endif %}
   <ul class="link_list">
     {% for person in object_list %}
     <li><a href="{{ person.get_absolute_url }}" title="View individual details">{{ person }}</a> <a href="{{ person.household.get_absolute_url }}"><img src="{{ MEDIA_URL }}/images/icon_house.gif" alt="household icon" /></a></li>
     {% endfor %}
   </ul>
+</div>
 {% endblock %}

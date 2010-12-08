@@ -3,19 +3,20 @@
 {% block title %}People{% endblock %}
 {% block body_class %}{{ block.super }} people_list{% endblock %}
 
-
-{% block content_title %}
-  <h2>{% if search_term %}Results for <strong>{{ search_term }}</strong>{% else %}Congregation Members{% endif %}</h2>
-{% endblock %}
-
-
 {% block content %}
-{% if not message %}
-  <ul class="link_list">
-    {% for person in object_list %}
-    <li><a href="{{ person.get_absolute_url }}" title="View individual details">{{ person }}</a> <a href="{{ person.household.get_absolute_url }}"><img src="{{ MEDIA_URL }}/images/icon_house.gif" alt="household icon" /></a></li>
-    {% endfor %}
-  </ul>
-        {% if has_previous %}<a href="?page={{  previous }}">&#060;&#060; previous</a> || {% endif %}{% if has_next %}<a href="?page={{ next }}">next &#062;&#062;</a>{% endif %}
-{% else %}<strong>{{ message }}</strong>{% endif %}
+        <div class="grid_8 sub_page_content">
+            {% block content_title %}
+                <h2>{% if search_term %}Results for <strong>{{ search_term }}</strong>{% else %}Congregation Members{% endif %}</h2>
+            {% endblock %}
+            {% if not message %}
+                <ul class="link_list">
+                    {% for person in object_list %}
+                    <li><a href="{{ person.get_absolute_url }}" title="View individual details">{{ person }}</a>
+                        <a href="{{ person.household.get_absolute_url }}"><img src="{{ MEDIA_URL }}/images/icon_house.gif" 
+                        alt="household icon" /></a></li>
+                    {% endfor %}
+                </ul>
+                {% if has_previous %}<a href="?page={{  previous }}">&#060;&#060; previous</a> || {% endif %}{% if has_next %}<a href="?page={{ next }}">next &#062;&#062;</a>{% endif %}
+        {% else %}<strong>{{ message }}</strong>{% endif %}
+        </div>
 {% endblock %}

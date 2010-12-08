@@ -181,6 +181,9 @@ ul {
     #footer p {
         margin-bottom: 4px;
     }
+    #footer img {
+        float: left;
+    }
     .f_links {
        padding-top: 5px;
     }
@@ -339,6 +342,7 @@ ul {
         float: right;
         width: 140px;
         margin-left: 20px;
+        margin-bottom: 20px;
     }
 
 #debug p { 
@@ -476,4 +480,12 @@ ul {
 .link_list img {
     vertical-align: middle;
     float: none;
+}
+
+pre {
+    margin-left: 20px;
+    padding: 5px;
+    background: #ccc;
+    color: #000;
+
 }

@@ -5,13 +5,9 @@
 {% block body_class %}{{ block.super }} post_list{% endblock %}
 
 
-{% block content_title %}
-  <h2>News Archive</h2>
-{% endblock %}
-
-
 {% block content %}
-  <div class="list post_list grid_8">    {% for post in object_list %}
+  <div class="list sub_page_content post_list grid_8">    
+    <h2>News Archive</h2>    {% for post in object_list %}
     <div class="item">
       <p class="date">{{ post.publish|date:"F d, Y" }}</p>
       <h3 class="title"><a href="{{ post.get_absolute_url }}" title="{% trans "View this post" %}">{{ post.title }}</a></h3>

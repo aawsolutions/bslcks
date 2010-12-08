@@ -1,0 +1,12 @@
+{% extends "base_site.html" %}
+
+{% load markup process_flat %}
+
+{% block title %}{{ flatpage.title }}{% endblock %}
+
+{% block content %}
+{{ flatpage.content|parse_blocks|markdown }}
+{% endblock %}
+
+{% block logo %}{% endblock %}
+

@@ -1,6 +1,7 @@
 from django import template
 from basic.bookmarks.models import Bookmark
 from basic.blog.models import Post
+from photologue.models import Photo
 from datetime import datetime
 import re
 
@@ -23,6 +24,23 @@ def do_fetch_bookmarks(parser, token):
         raise template.TemplateSyntaxError, "%r tag's argument should be in quotes" % tag_name
     return BookmarkNode(fetch_string[1:-1])
 
+#Get a Photo URL
+class PhotoUrlNode(template.Node):
+    def __init__(self, fetch_string):
+        self.fetch_string = fetch_string
+    def render(self, context):
+        p = Photo.objects.get(title_slug=self.fetch_string)
+        return p.image.url
+
+@register.tag(name='fetch_image_url')
+def do_fetch_img_url(parser, token):
+    try:
+        tag_name, fetch_string = token.split_contents()
+    except ValueError:
+        raise template.TemplateSyntaxError, "%r tag requires a single argument" % token.contents.split()[0]
+    if not (fetch_string[0] == fetch_string[-1] and fetch_string[0] in ('"', "'")):
+        raise template.TemplateSyntaxError, "%r tag's argument should be in quotes" % tag_name
+    return PhotoUrlNode(fetch_string[1:-1])
 
 #URLIFY text
 urlfinder = re.compile('^(http:\/\/\S+)')
