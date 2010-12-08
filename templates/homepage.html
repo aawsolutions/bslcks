@@ -80,7 +80,11 @@
    <div class="bigblock grid_4">
         <h1>Today in the Word</h1> 
         <p><strong>{{ dailybread.date|date:"D n/d" }}</strong> - <a href="/dailybread/today">{{ dailybread.scripture }}</a><br/>
-        {{ dailybread.thoughts|truncatewords:20 }}
+        {{ dailybread.thoughts|truncatewords:20 }}</p>
+        <ul>
+            <li><a href="{% url get_daily_bread_index %}">Daily Bread Devotions</a></li>
+            <li><a href="{% url blog_category_detail 'sermons' %}">Sermons</a></li>
+        </ul>
    </div>
    <div class="bigblock grid_4 mediaicons">
         <h1>Connect with us</h1>

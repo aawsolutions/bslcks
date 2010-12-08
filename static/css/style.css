@@ -82,12 +82,14 @@ ul {
     font-weight: strong;
 }
     .logo p { 
-        text-align: right;
         font-size: .9em;
     }
     .logo a {
         text-decoration: none;
         color: #808080;
+    }
+    .logo img {
+        margin-left: -35px;
     }
 
 .bigblock {
@@ -395,7 +397,17 @@ ul {
     width: 460px;
 }
 
+.loginform {
+    width: 350px;
+}
+    .loginform label {
+        margin-right: 10px;
+    }
+    .loginform input {
+        margin-bottom: 10px;
+    }
     .loginform button {
+        float: none;
         background: #628703;
         color: #fff;
         border: 2px solid #628703;
@@ -489,4 +501,10 @@ pre {
     background: #ccc;
     color: #000;
 
+}
+
+.inline_right {
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 5px;
 }

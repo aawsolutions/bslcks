@@ -1,0 +1,27 @@
+{% extends "base_site.html" %}
+
+{% load markup process_flat %}
+
+{% block title %}{{ flatpage.title }}{% endblock %}
+
+{% block content %}
+<div class="grid_8 sub_page_content">
+{{ flatpage.content|parse_blocks|markdown }}
+
+</div>
+{% endblock %}
+
+{% block leftnav %}
+    <div class="bigblock">
+        <h1>Preschool</h1>
+        <ul>
+            <li><a href="/">Church Home</a></li>
+            <li><a href="/map">Map &amp; Directions</a></li>
+        </ul>
+            <h4>(913) 780-6889</h4>
+            <a href="mailto:preschool@bslcks.org" title="Email BSLC Preschool">Email</a></br>
+            
+    </div>
+    
+{% endblock %}
+

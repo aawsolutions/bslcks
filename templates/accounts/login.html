@@ -10,20 +10,18 @@
 
 {% block body %}
 
-    <div class="bigblock grid_6"> {% if form.errors %}
+    <div class="bigblock grid_6"> 
+        <p><a href="mailto:webteam@bslcks.org">Email us</a> if you need assistance logging in</p>{% if form.errors %}
+
         <div class="error_message">Username or Password were incorrect, please try again</div>{% endif %}
         <div class="loginform">
             <form method="post" action="{% url django.contrib.auth.views.login %}">
             {% csrf_token %}
-            <ul>            
-                {{ form.as_p }}
-            </ul>
+                {{ form }}
             <button type="submit" value="login">Login</button>
             <input type="hidden" name="next" value="/" />
-
             </form>
         </div>
-        
 
     </div>
 
