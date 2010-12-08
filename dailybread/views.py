@@ -59,11 +59,11 @@ def daily_bread_index(request):
     except:
         sermon = []
     try:
-        daily_devotions = Devotion.objects.filter(date__lte=datetime.date.today()).latest('date')
+        devotions = Devotion.objects.filter(date__lte=datetime.date.today()).latest('date')
     except: 
-        daily_devotions = []
+        devotions = []
 
-    return render_to_response('dailybread_home.html', { 
+    return render_to_response('dailybread/dailybread_home.html', { 
         'devotion_bookmarks': bookmarks,
         'current_sermon': sermon,
         'dailybread': devotions,
@@ -72,7 +72,7 @@ def daily_bread_index(request):
 
 def daily_bread_today(request):
 
-    return render_to_response('dailybread.html', {
+    return render_to_response('dailybread/todays_bread.html', {
         'dailybread': most_recent_devotion(request),
         'keys': allkeys(request.META['HTTP_HOST']),
     }, context_instance=RequestContext(request))
