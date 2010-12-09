@@ -522,3 +522,8 @@ pre {
     margin-left: 10px;
     margin-bottom: 5px;
 }
+
+.first_col {
+    margin-left: -1px;
+    border-right: 1px dotted #044959;
+}

@@ -4,9 +4,7 @@ A django project customized for use at Beautiful Savior Lutheran Church in Olath
 ## TODO:
  Mostly in order
 
-__System__
-
- * Generate Username/Passwords
+### Functionality
  * Site Search
  * Date-based navigation for news in left block
  * Liturgi-Cal (church year detection and banner for homepage)
@@ -15,5 +13,10 @@ __System__
  * Outline dependancies in the app (low priority)
  * Flickr
 
-__Content__
- * Static 'blurbs' for the sub-content sections 
+### System
+ * Code cleanup (badly needed)
+ * Code documentation
+
+### Templates / UI
+ * Template refactoring to make sub-pages less breakable (ie the Bigblock "Worship with us" div that's on most pages is duplicated rather than inherited)
+ * CSS and Templates need to be less functionality specific and more generalized (ie, devotional classes need to go away and be replaced with more generic layout hints)

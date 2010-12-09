@@ -9,9 +9,9 @@
 
 
 {% block content %}
-    <div class="grid_4 sub_page_content">{% if current_sermon %} 
+    <div class="grid_4 sub_page_content first_col">{% if current_sermon %} 
         <h2>"{{ current_sermon.title }}"</h2>
-        <h3>Sermon from <a href="{{ current_sermon.get_absolute_url }}" title="Current Sermon">{{ current_sermon.publish|date:"N j" }}</a> by {{ current_sermon.author.get_profile }}</h3>
+        <h3>Sermon from <a href="{{ current_sermon.get_absolute_url }}" title="Current Sermon">{{ current_sermon.publish|date:"N j" }}</a> <br/>by {{ current_sermon.author.get_profile }}</h3>
         <p>{{ current_sermon.body|striptags|markdown }}</p>
         <p><a href="{{ current_sermon.get_absolute_url }}" title="Current Sermon">Click here to listen</a></p>
         <p><a href="{% url blog_category_detail slug='sermons' %}">Click here for all sermons</a></p>
