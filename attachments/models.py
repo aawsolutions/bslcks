@@ -18,7 +18,7 @@ def generate_path(instance, filename):
     return os.path.join('attachments', instance.category.title, filename)
 
 class Attachment(models.Model):
-    file = models.FileField(upload_to=generate_path, blank=True) 
+    file = models.FileField(upload_to=generate_path, blank=True, help_text='Filename must be less than 100 characters long') 
     file_date = models.DateTimeField()
     description = models.TextField(blank=True)
     category = models.ForeignKey(Category, blank=True, null=True)

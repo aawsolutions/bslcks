@@ -1,25 +1,30 @@
 {% extends "base_site.html" %}
 
-{% load markup process_flat %}
+{% load markup inlines process_flat %}
+
+{% block meta_author %}Beautiful Savior Lutheran Preschool{% endblock %}
+{% block meta_description %}Our Preschool at Beautiful Savior Lutheran Church offers a Christ centered approach to early childhood education.  Learn more about our nationally accredited program today!{% endblock %}
+{% block meta_keywords %}, MO Synod, Missouri Synod, Lutheren, Lutheran,Johnson County, Olathe, Overland Park, Spring Hill, Stanley, BlackBob, Black-Bob, Pre-School, preschool, teaching children, kids, religious, religion, school, MDO, Mother's Day Out{% endblock %}
 
 {% block title %}{{ flatpage.title }}{% endblock %}
 
 {% block content %}
 <div class="grid_8 sub_page_content">
-{{ flatpage.content|parse_blocks|markdown }}
+{{ flatpage.content|parse_blocks|markdown|render_inlines }}
 
 </div>
 {% endblock %}
 
 {% block leftnav %}
     <div class="bigblock">
+        <a href="/">Church Home</a>
         <h1>Preschool</h1>
-        <ul>
-            <li><a href="/">Church Home</a></li>
-            <li><a href="/map">Map &amp; Directions</a></li>
-        </ul>
-            <h4>(913) 780-6889</h4>
-            <a href="mailto:preschool@bslcks.org" title="Email BSLC Preschool">Email</a></br>
+        <strong>(913) 780-6889</strong>
+        <p><a href="/preschool">Home</a></p>
+        <p><a href="/map">Map &amp; Directions</a></p>
+        <p><a href="mailto:preschool@bslcks.org" title="Email BSLC Preschool">Email</a></p>
+        <p><a href="/preschool/forms/" title="Preschool Forms Page">Forms</a></p>
+        <p><a href="/preschool/summer-camp/" title="Summer Camp">Summer Camp</a></p>
             
     </div>
     

@@ -245,6 +245,7 @@ ul {
 .devotional_thoughts {
     float: right;
     border-left: 1px dotted #044959;
+    border-bottom: 1px dotted #044959;
     margin-left: 10px;
     width: 305px;
 }
@@ -259,6 +260,27 @@ ul {
         font-size: 1.15em;
         padding-left: 10px;
     }
+
+.inline_attachment {
+    clear: right;
+    float: right;
+    border-left: 1px dotted #044959;
+    border-bottom: 1px dotted #044959;
+    margin-left: 10px;
+    padding-left: 10px;
+    width: 200px;
+}
+    inline_attachment p {
+        width: 180px;
+    }
+    .download_lnk a {
+        padding-left: 21px;
+        background: #fff url('/images/download_arrow.png') no-repeat left center;
+    }   
+    .download_lnk a:hover {
+        background: #fff url('/images/download_arrow_down.png') no-repeat left center;
+    }
+
 
 .sub_page_content {
     color: #424242;
@@ -480,14 +502,6 @@ ul {
 .leftnav img {
     margin-left: -20px;
     margin-bottom: 45px;
-}
-
-.download-lnk a {
-    padding-left: 21px;
-    background: #fff url('/images/download_arrow.png') no-repeat left center;
-}
-.download-lnk a:hover {
-    background: #fff url('/images/download_arrow_down.png') no-repeat left center;
 }
 
 .link_list img {

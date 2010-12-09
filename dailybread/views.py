@@ -4,7 +4,7 @@ from django.template import RequestContext
 
 from dailybread.models import Devotion
 from basic.bookmarks.models import Bookmark
-from sermons.models import Sermon
+from basic.blog.models import Post
 
 from apikeys.fetch import allkeys
 from apikeys.models import Key
@@ -51,22 +51,22 @@ def most_recent_devotion(request):
 
 def daily_bread_index(request):
     try:
-        bookmarks = Bookmarks.objects.filter(tags__icontains='dailybread')
+        bookmarks = Bookmark.objects.filter(tags__icontains='dailybread')
     except:
         bookmarks = []
     try:
-        sermon = Sermons.objects.filter(date__lte=datetime.date.today()).latest('date')[0]
+        sermon = Post.objects.filter(categories__slug='sermons').filter(publish__lte=datetime.date.today()).latest('publish')
     except:
         sermon = []
     try:
-        devotions = Devotion.objects.filter(date__lte=datetime.date.today()).latest('date')
+        devotion = Devotion.objects.filter(date__lte=datetime.date.today()).latest('date')
     except: 
-        devotions = []
+        devotion = []
 
     return render_to_response('dailybread/dailybread_home.html', { 
         'devotion_bookmarks': bookmarks,
         'current_sermon': sermon,
-        'dailybread': devotions,
+        'dailybread': devotion,
         'keys': allkeys(request.META['HTTP_HOST']),
     }, context_instance=RequestContext(request))
 

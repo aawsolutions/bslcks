@@ -1,12 +1,32 @@
 {% extends 'base_site.html' %}
 
-{% load comments %}
+{% load comments markup %}
 
 {% block title %}Daily Bread{% endblock %}
 
+{% block meta_keywords %}, devotions, dailybread, daily bread, daily devotions, daily thoughts{% endblock %}
+{% block meta_description %}Check here daily for daily scripture readings, recent sermons, and links to other inspirational sites {% endblock %}
+
+
 {% block content %}
-    <div class="grid_8">    
-        
+    <div class="grid_4 sub_page_content">{% if current_sermon %} 
+        <h2>"{{ current_sermon.title }}"</h2>
+        <h3>Sermon from <a href="{{ current_sermon.get_absolute_url }}" title="Current Sermon">{{ current_sermon.publish|date:"N j" }}</a> by {{ current_sermon.author.get_profile }}</h3>
+        <p>{{ current_sermon.body|striptags|markdown }}</p>
+        <p><a href="{{ current_sermon.get_absolute_url }}" title="Current Sermon">Click here to listen</a></p>
+        <p><a href="{% url blog_category_detail slug='sermons' %}">Click here for all sermons</a></p>
+{% endif %}
     </div>
+    <div class="grid_4 sub_page_content">    
+        <h2>Today in the Word</h2>
+            <h3><a href="{% url get_daily_bread_today %}">{{ dailybread.scripture }}</a></h3>
+            <p>{{ dailybread.thoughts|markdown }}</p>
+        <h2>More daily devotions</h2>
+        <p>Check out these other great resources to learn and grow daily in the word</p>
+            <ul>{% for link in devotion_bookmarks %}
+                <li><a href="{{ link.url }}" title="{{ link.description }}">{{ link.title }}</a> </p> {% endfor %}
+            </ul>
+    </div>
+
 {% endblock %}
 
