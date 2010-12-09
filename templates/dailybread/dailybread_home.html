@@ -13,8 +13,8 @@
         <h2>"{{ current_sermon.title }}"</h2>
         <h3>Sermon from <a href="{{ current_sermon.get_absolute_url }}" title="Current Sermon">{{ current_sermon.publish|date:"N j" }}</a> <br/>by {{ current_sermon.author.get_profile }}</h3>
         <p>{{ current_sermon.body|striptags|markdown }}</p>
-        <p><a href="{{ current_sermon.get_absolute_url }}" title="Current Sermon">Click here to listen</a></p>
-        <p><a href="{% url blog_category_detail slug='sermons' %}">Click here for all sermons</a></p>
+        <p class="float_right"><a href="{{ current_sermon.get_absolute_url }}" title="Current Sermon">Click here to listen</a><br/>
+        <a href="{% url blog_category_detail slug='sermons' %}">Click here for all sermons</a></p>
 {% endif %}
     </div>
     <div class="grid_4 sub_page_content">    
@@ -24,8 +24,11 @@
         <h2>More daily devotions</h2>
         <p>Check out these other great resources to learn and grow daily in the word</p>
             <ul>{% for link in devotion_bookmarks %}
-                <li><a href="{{ link.url }}" title="{{ link.description }}">{{ link.title }}</a> </p> {% endfor %}
+                <li><a href="{{ link.url }}" title="{{ link.description }}">{{ link.title }}</a></li> {% endfor %}
             </ul>
+            Be sure to visit our LCMS Publisher, Concordia Publishing House, for more resources
+            <a href="http://www.cph.org" target="_blank"><img src="http://www.cph.org/images/topics/images/clipart/webart/CPHlogo1a.gif" width="176" height="69" border="0"></a>
+        </p>
     </div>
 
 {% endblock %}

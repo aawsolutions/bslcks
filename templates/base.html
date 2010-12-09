@@ -30,7 +30,7 @@
     </script> 
 </head>
 
-<body id="{% block body_id %}main{% endblock %}" class="{% block body_class %}normal{% endblock %}">
+<body>
     {% block emergency_message %}{% endblock %}
     <div id="header">
         {% if user.is_authenticated %}{% with user.get_profile as profile %}

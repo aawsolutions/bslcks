@@ -527,3 +527,8 @@ pre {
     margin-left: -1px;
     border-right: 1px dotted #044959;
 }
+.float_right {
+    float: right;
+    text-align: right;
+    padding-right: 10px;
+}
