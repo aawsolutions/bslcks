@@ -1,8 +1,11 @@
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.core.exceptions import ObjectDoesNotExist
+
 from django.template import RequestContext
 from django.db.models import Q
-
+from django import forms
 from django.views.generic import TemplateView
 
 from datetime import date
@@ -57,3 +60,38 @@ def Staff(request):
         'keys': allkeys(request.META['HTTP_HOST']),
         'staffgroups': staffgroups,
     },context_instance=RequestContext(request))
+
+class EulaForm(forms.Form):
+    accept = forms.BooleanField(required=False)
+
+def accept_eula(request):
+    from django.contrib.flatpages.models import FlatPage
+    try:
+        eula = FlatPage.objects.get(url='/eula/')
+    except ObjectDoesNotExist:
+        eula = []
+
+    message = ''
+    if request.method == 'POST':
+        form = EulaForm(request.POST)
+        if form.is_valid():
+            accepted = form.cleaned_data['accept']
+            if request.user.is_authenticated():
+                if accepted == True:
+                    try:
+                        request.user.groups.add(3)
+                        return HttpResponseRedirect('/')
+                    except ObjectDoesNotExist:
+                        message = 'Please contact <%s>, there has been a system error' % settings.ADMINS[0][1]
+                else:
+                    message = 'You must accept the End User Licence Agreement to use the site while logged in.  If you do not wish to accept the agreement then you may log out and continue to use the public features'
+    else:
+        form = EulaForm()
+        message = 'There was an error processing your request.  Please try again'
+    return render_to_response('accept-eula.html', {
+        'form': form,
+        'message': message,
+        'eula': eula,
+    },context_instance=RequestContext(request))
+
+

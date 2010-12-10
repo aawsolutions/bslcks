@@ -1,0 +1,34 @@
+{% extends 'base_site.html' %}
+
+{% block title %}End-User-Licence-Acceptance{% endblock %}
+
+{% block content %}
+<div class="grid_8 sub_page_content">
+    {% autoescape off%}{{ eula.content }}{% endautoescape %}
+    <div class="eula_form">
+        <form action="{% url accept_eula %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block leftnav %}
+    <div class="bigblock">
+        <h1>Worship with us!</h1>
+        <p>
+          <strong>Sunday Worship</strong> morning services @ 8:00am, 10:45am, and 6:00p <br/>
+          <strong>Family Education Hour</strong> @ 9:30am
+        </p>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/map">Map</a></li>
+            <li><a href="/beliefs">Beliefs</a></li>
+          </ul>
+    </div>
+{% endblock %}
+

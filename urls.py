@@ -39,4 +39,7 @@ urlpatterns += patterns('bslcks.views',
     url(r'^staff/',
         view='Staff',
         name='staff'),
+    url(r'^accept-eula/',
+        view='accept_eula',
+        name='accept_eula',),
 )
