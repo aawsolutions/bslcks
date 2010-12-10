@@ -1,17 +1,19 @@
 {% extends 'base_site.html' %}
 
+{% load markup %}
 {% block title %}End-User-Licence-Acceptance{% endblock %}
 
 {% block content %}
 <div class="grid_8 sub_page_content">
     {% autoescape off%}{{ eula.content }}{% endautoescape %}
     <div class="eula_form">
-        <form action="{% url accept_eula %}" method="post">
+        <form action="/" method="post">
             {% csrf_token %}
-            {{ form }}
-            <button type="submit">Submit</button>
+            <h4>{{ form }}
+            <button type="submit">Submit</button></h4>
         </form>
     </div>
+    <h3>{{ message|markdown }}</h3>
 </div>
 
 {% endblock %}
