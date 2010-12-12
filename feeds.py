@@ -2,7 +2,9 @@ from django.contrib.syndication.views import Feed
 from django.contrib.markup.templatetags import markup
 from basic.blog.models import Post
 from bslcks.bslctags.templatetags import mytags
+from bslcks.bslctags.templatetags import process_flat
 from basic.inlines.templatetags import inlines
+
 
 class LatestNewsFeed(Feed):
     title = "Beautiful Savior Lutheran Church Current News"
@@ -18,5 +20,6 @@ class LatestNewsFeed(Feed):
     def item_description(self, item):
         item.body = inlines.render_inlines(item.body)
         item.body = markup.markdown(item.body)
-        return mytags.privatize(item.body)
+        item.body = mytags.privatize(item.body)
+        return process_flat.parse_blocks(item.body)
 

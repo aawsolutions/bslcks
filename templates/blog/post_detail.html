@@ -24,7 +24,7 @@
     {% if user.is_authenticated %}
         {{ object.body|render_inlines|parse_blocks|markdown }}
     {% else %}
-        {{ object.body|render_inlines|parse_blocks|privatize|markdown }}
+        {{ object.body|privatize|render_inlines|parse_blocks|markdown }}
     {% endif %}
   </div>
 

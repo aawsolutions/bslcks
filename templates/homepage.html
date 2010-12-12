@@ -52,7 +52,7 @@
       <div id="slider"> 
           <ul>{% fetch_posts "9" %}{% for post in posts %}
                 <li>
-                    <h1>{{ post.title }}</h1>
+                    <h1>{{ post.title }} ({{ post.publish|date:"n/j" }})</h1>
                     <div class="slider_message">
                         {% if user.is_authenticated %}{{ post.body|markdown|striptags|truncatechars:330 }}{% else %}{{ post.body|markdown|striptags|privatize|truncatechars:330 }}{% endif %} <a href='{{post.get_absolute_url }}'>read more</a>
                     </div>
@@ -86,15 +86,24 @@
             <li><a href="{% url blog_category_detail 'sermons' %}">Sermons</a></li>
         </ul>
    </div>
-   <div class="bigblock grid_4 mediaicons">
+   <div class="bigblock grid_4">
         <h1>Connect with us</h1>
-        <a href="/rss"><img src="{{ MEDIA_URL }}images/icons/rss.jpg" alt="rss feeds"/></a>
-        <a href="http://www.twitter.com/bslcks"><img src="{{ MEDIA_URL }}images/icons/twitter.jpg" alt="twitter feed"/></a>
-        <a href="http://www.vimeo.com/bslcks" title="BSLCKS on Vimeo"><img src="{{ MEDIA_URL }}images/icons/vimeoico.png" alt="vimeo channel"/></a>
-        <a class="mediaicons_last" href="/youtube"><img src="{{ MEDIA_URL }}images/icons/youtube.jpg" alt="youtube channel"/></a>
+        <div class="mediaicons">
+          <ul>
+            <li><a href="/rss"><img src="{{ MEDIA_URL }}images/icons/rss_sm.jpg" alt="rss feeds"/></a></li>
+            <li><a href="http://www.twitter.com/bslcks"><img src="{{ MEDIA_URL }}images/icons/twitter_sm.jpg" alt="twitter feed"/></a></li>
+            <li><a href="http://www.vimeo.com/bslcks" title="BSLCKS on Vimeo"><img src="{{ MEDIA_URL }}images/icons/vimeoico_sm.png" alt="vimeo channel"/></a></li>
+            <li><a class="mediaicons_last" href="/youtube"><img src="{{ MEDIA_URL }}images/icons/youtube_sm.jpg" alt="youtube channel"/></a></li>
+          </ul>
+        </div>
         {% if user.is_authenticated %}<form action="{% url congregation_search %}" method="get">
-            <div class="buffed"><input type="text" name="findperson" id="findperson" value="church directory search"/><button type="submit">Search</button></div>
-        </form>{% else %}<h4><a href="/welcome/">Welcome to Beautiful Savior!</a></h4><p><strong>a message from Pastor Schultz</strong></p>{% endif %}
+            <div><input type="text" name="findperson" id="findperson" value="church directory search"/><br/><button type="submit">Search</button></div>
+        </form>{% else %}<strong><a href="/welcome/">Welcome to Beautiful Savior!</a></strong><p>Click here for a message from Pastor Schultz</p>{% endif %}
+        <p></p>
+        <ul>
+            <li><a href="/this-week/" title="Calendar">Calendar</a></li>
+            <li><a href="/this-week/" title="Weekly calendar">This Week</a></li>
+        </ul>
    </div>
    <div class="clear"></div>
 {% endblock %}
