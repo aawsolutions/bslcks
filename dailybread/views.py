@@ -83,7 +83,7 @@ def scripture_reference(request, reference):
     dailybread = Daily()
     dailybread.passage = ESVscripture(reference, request.META['HTTP_HOST'])
 
-    return render_to_response('dailybread.html', {
+    return render_to_response('dailybread/todays_bread.html', {
         'dailybread': dailybread,
         'keys': allkeys(request.META['HTTP_HOST']),
     }, context_instance=RequestContext(request))
