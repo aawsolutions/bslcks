@@ -20,14 +20,13 @@
     {% if object.landline %}<li> Landline: {{ object.landline }}</li>{% endif %}
     {% if object.cellphone %}<li>Cellphone: {{ object.cellphone }}</li>{% endif %}
     {% if object.email %}<li>Email: <a href="mailto:{{ object.email }}">{{ object.email }}</a></li>{% endif %}
-    <li>Home Address: {{ object.household.full_address }}</li>
     {% if object.mailbox_set.values %}<li>Church Mailbox # {% for box in  object.mailbox_set.values %}{{box.number}}{% endfor %}</li>{% endif %}
     
 </ul>
 
 <h3>About</h3>
 <ul>
-    <li><a href="{{ object.household.get_absolute_url }}">Household</a></li>
+    <li><a href="{{ object.household.get_absolute_url }}">Household & Address</a></li>
     {% if object.birth_date %}<li>Birthday: {{ object.birth_date|date:"F jS" }}</li>{% endif %}
     {% if object.baptism_date %}<li>Baptised: {{ object.baptism_date|date:"F jS" }}</li>{% endif %}
     {% if object.joined %}<li>Joined: {{ object.joined|date:"F jS, Y" }}</li>{% endif %}

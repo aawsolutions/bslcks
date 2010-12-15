@@ -38,7 +38,7 @@ def household_list(request, paginate_by=20, **kwargs):
 def person_list(request, paginate_by=20, **kwargs):
     return list_detail.object_list(
         request,
-        queryset=Person.objects.all(),
+        queryset=Person.objects.exclude(deceased__isnull=False).exclude(active=False).exclude(opt_in_directory=False),
         paginate_by=paginate_by,
         **kwargs
     )
@@ -72,9 +72,15 @@ def talents_detail(request, slug, **kwargs):
 
 @login_required
 def household_detail(request, slug, **kwargs):
+    try:
+        h = Household.objects.get(slug=slug)
+        people = h.person_set.exclude(deceased__isnull=False).exclude(active=False).exclude(opt_in_directory=False)
+    except:
+        people = None
     return list_detail.object_detail(
         request,
         queryset=Household.objects.all(),
+        extra_context={'people': people,},
         slug=slug,
         **kwargs
     )
@@ -88,7 +94,7 @@ def person_detail(request, slug, **kwargs):
             extra['editme'] = request.GET.get('edit', False)
         return list_detail.object_detail(
             request,
-            queryset=Person.objects.all(),
+            queryset=Person.objects.exclude(deceased__isnull=False).exclude(active=False).exclude(opt_in_directory=False),
             slug=slug,
             extra_context=extra,
             **kwargs
@@ -171,6 +177,8 @@ def search(request, template_name='congregation/search_results.html'):
                     message = 'matches found for '
             else:
                 message = 'matches found for '
+
+            people_list = people_list.exclude(deceased__isnull=False).exclude(active=False).exclude(opt_in_directory=False)
             context = {'object_list': people_list, 'message': message, 'search_term':search_term, }
         else:
             message = 'Search term was too vague. Please try again.'

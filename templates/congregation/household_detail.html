@@ -20,7 +20,7 @@
 </ul>
 
 <h3>Members</h3>
-<ul>{% for person in object.person_set.all|dictsort:"directory_report_order" %}
+<ul>{% for person in people|dictsort:"directory_report_order" %}
     <li><a href="{{ person.get_absolute_url }}">{{ person }}</a>{% if person.age < 18 and person.age > 0 %} ({{ person.age }}){% endif %}</li>{% endfor %}
 </ul>    
 <p>For personal contact details, click the individual name</p>
