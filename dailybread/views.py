@@ -55,7 +55,7 @@ def daily_bread_index(request):
     except:
         bookmarks = []
     try:
-        sermon = Post.objects.filter(categories__slug='sermons').filter(publish__lte=datetime.date.today()).latest('publish')
+        sermon = Post.objects.filter(categories__slug='sermons').filter(publish__lte=datetime.datetime.now()).latest('publish')
     except:
         sermon = []
     try:

@@ -547,6 +547,7 @@ pre {
 
 .first_col {
     margin-left: -1px;
+    padding-right: 5px;
     border-right: 1px dotted #044959;
 }
 .float_right {
