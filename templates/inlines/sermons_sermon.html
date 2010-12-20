@@ -1,6 +1,5 @@
-{% load markup %}
+{% load markup process_flat %}
 <div class="object_inline">
-    <a href="{{ object.audio_file.url }}" target=_BLANK>Click here to download the sermon</a>
-    <div class="inline_text">{{ object.text|markdown }}</div>
+    {% if object.video %}{% load oembed_tags %}<div class="float_right">{% oembed %}{{ object.video }}{% endoembed %}{% endif %}{% if object.audio_file %}<p><a href="{{ object.audio_file.url }}" target=_BLANK>Click here to download the sermon</a></p>{% endif %}<div class="inline_text">{{ object.text|parse_blocks|markdown }}</div>
 </div>
 

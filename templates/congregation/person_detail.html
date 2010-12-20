@@ -12,7 +12,7 @@
     <h2>{% if object.prefix %}{{ object.prefix.prefix }} {% endif %}{{ object }}</h2>
     {% if this_is_you %}<p><a href="{% url change_password %}">Change your password</a></p>{% endif %}
 {% if object.picture %}
-    <img src="{{ MEDIA_URL }}{{ object.picture.image }}" height="250px" title="{{ object }}" />
+    <img class="float_right" src="{{ MEDIA_URL }}{{ object.picture.image }}" height="250px" title="{{ object }}" />
 {% endif %}
 
 <h3>Contact Info</h3>
@@ -30,8 +30,9 @@
     {% if object.birth_date %}<li>Birthday: {{ object.birth_date|date:"F jS" }}</li>{% endif %}
     {% if object.baptism_date %}<li>Baptised: {{ object.baptism_date|date:"F jS" }}</li>{% endif %}
     {% if object.joined %}<li>Joined: {{ object.joined|date:"F jS, Y" }}</li>{% endif %}
-    {% if object.bio %}<li>Bio: {{ object.bio|markdown }}</li>{% endif %}
+
 </ul>    
+    {% if object.bio %}{{ object.bio|markdown }}{% endif %}
 {% if object.role.exists %}
     <h3>Roles</h3>
     <ul>{% for r in object.role.values %}

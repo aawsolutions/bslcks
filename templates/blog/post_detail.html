@@ -7,6 +7,12 @@
 
 {% block content %}
     <div class="grid_8 sub_page_content">
+    <div class="float_right">
+        <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="bslcks">Tweet</a><br/>
+            <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+            <fb:like layout="button_count" show_faces="false" width="100" font="trebuchet ms"></fb:like>
+    </div>
         <h2>{{ object.title }}</h2>
         <p class="other_posts">
         {% if object.get_previous_by_publish %}
@@ -19,7 +25,6 @@
 
   {% load blog comments tagging_tags inlines markup %}
   <p class="date">{{ object.publish|date:"F jS Y" }} {% if object.author.get_profile %}by <a href="{{ object.author.get_profile.get_absolute_url }}">{{ object.author.get_profile }}</a>{% endif%}</p>
-
   <div class="body">
     {% if user.is_authenticated %}
         {{ object.body|render_inlines|parse_blocks|markdown }}

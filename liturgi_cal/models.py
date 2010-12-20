@@ -1,12 +1,31 @@
 from django.db import models
 
-
 ## {{{ http://code.activestate.com/recipes/576518/ (r1)
 #The year parameter is the year of the First Sunday in Advent - the beginning of the church year, and the resulting calendar thus ends in the following year
 
 from datetime import date, timedelta
 
 class LiturgicalYear(models.Model):
+
+    year = models.IntegerField()
+    vatican2 = models.BooleanField(default=False)
+    easter = models.DateField()
+    epiphany1 = models.DateField()
+    epiphany = date(year + 1, 1, 6)
+    transfiguration = self.easter - timedelta(49)
+    septuagesima = self.easter - timedelta(63)
+    ashWednesday = self.easter - timedelta(39)
+    maundyThursday = self.easter - timedelta(3)
+    goodFriday = self.easter - timedelta(2)
+    palmSunday = self.easter - timedelta(7)
+    ascension = self.easter + timedelta(39)
+    pentecost = self.easter + timedelta(49)
+    trinity = self.easter + timedelta(56)
+    trinityLast = next_advent1 - timedelta(7)
+    pentecostLast = self.trinityLast
+    epiphanySundays = (self.transfiguration - self.epiphany1).days / 7 + 1
+    trinitySundays = (next_advent1 - self.trinity).days / 7 - 1
+    pentecostSundays = self.trinitySundays + 1
 
     def __init__(self, year, v2 = True):
         #v2 = "Vatican II" and refers to the reforms made to the calendar

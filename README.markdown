@@ -2,13 +2,13 @@
 A django project customized for use at Beautiful Savior Lutheran Church in Olathe, KS (http://bslcks.org)
 
 ## TODO:
- Mostly in order
+ TODO List is no longer preventing public launch.  These can all be achieved in continuous improvement.  
 
 ### Functionality
+ * **API KEYS CONTEXT PROCESSOR** - didn't even think to solve it this way before.  Oh well...
  * Site Search
  * Date-based navigation for news in left block
- * Liturgi-Cal (church year detection and banner for homepage)
- * api keys tag for the base template (allow jquery on non-core apps templates)
+ * Liturgi-Cal (church year detection and banner for homepage) 
  * Pretty comment form
  * Outline dependancies in the app (low priority)
  * Flickr
