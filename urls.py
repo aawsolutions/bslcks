@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     (r'^events/', include('basic.events.urls')),
     (r'^places/', include('basic.places.urls')),
     (r'^dailybread/', include('dailybread.urls')),
+    (r'^surveys/', include('survey.urls')),
     (r'^rss/', LatestNewsFeed()),
 )
 

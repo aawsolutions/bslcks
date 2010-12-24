@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Vollkorn:regular,bold&amp;subset=latin" />
     <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Droid+Sans&amp;subset=latin" />
 {% block extra_css %}{% endblock %}
+{% block styles %}{% endblock %}
     <link rel="shortcut icon" href="{{ MEDIA_URL }}images/favicon.png" />
 
 {% if keys %}    <script src="http://www.google.com/jsapi?key={{ keys|fetchkey:"Google"  }} " type="text/javascript"></script>
