@@ -12,7 +12,7 @@
                 <ul class="link_list">
                     {% for person in object_list %}
                     <li><a href="{{ person.get_absolute_url }}" title="View individual details">{{ person }}</a>
-                        <a href="{{ person.household.get_absolute_url }}"><img src="{{ STATIC_URL }}/images/icon_house.gif" 
+                        <a href="{{ person.household.get_absolute_url }}"><img src="{{ STATIC_URL }}images/icon_house.gif" 
                         alt="household icon" /></a></li>
                     {% endfor %}
                 </ul>

@@ -12,7 +12,7 @@
     <h2>{% if object.prefix %}{{ object.prefix.prefix }} {% endif %}{{ object }}</h2>
     {% if this_is_you %}<p><a href="{% url change_password %}">Change your password</a></p>{% endif %}
 {% if object.picture %}
-    <img class="float_right" src="{{ STATIC_URL }}{{ object.picture.image }}" height="250px" title="{{ object }}" />
+    <img class="float_right" src="{{ MEDIA_URL }}{{ object.picture.image }}" height="250px" title="{{ object }}" />
 {% endif %}
 
 <h3>Contact Info</h3>
