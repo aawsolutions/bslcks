@@ -26,6 +26,16 @@ urlpatterns = patterns('congregation.views',
         name='person_detail'
     ),
 
+    url(r'^profile-manager/$',
+        view='profile_manager',
+        name='profile_manager'
+    ),
+
+    url(r'^household-manager/$',
+        view='household_manager',
+        name='household_manager'
+    ),
+
     url(r'^groups/$',
         view='group_list',
         name='group_list'

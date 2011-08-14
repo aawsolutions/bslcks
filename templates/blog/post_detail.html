@@ -1,4 +1,4 @@
-{% extends "blog/base_blog.html" %}  {% load i18n mytags process_flat markup %}
+{% extends "blog/base_blog.html" %}  {% load i18n mytags process_flat markup oembed_tags %}
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block meta_keywords %},{{ object.tags }}{% endblock %}
@@ -23,7 +23,7 @@
     {% endif %}
   </p>
 
-  {% load blog comments tagging_tags inlines markup %}
+  {% load blog comments tagging_tags inlines %}
   <p class="date">{{ object.publish|date:"F jS Y" }} {% if object.author.get_profile %}by <a href="{{ object.author.get_profile.get_absolute_url }}">{{ object.author.get_profile }}</a>{% endif%}</p>
   <div class="body">
     {% if user.is_authenticated %}

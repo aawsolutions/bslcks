@@ -53,9 +53,13 @@ def Staff(request):
     staffgroups[4] = staff.filter(role__name__icontains='assistant').exclude(role__name__icontains='senior').distinct()
     staff = staff.exclude(role__name__icontains='assistant')
     staffgroups[5] = staff.filter(role__name__icontains='coordinator').distinct()
+    staffgroups[6] = staff.filter(role__name__icontains='choir').distinct()
 
     return render_to_response('staff.html', {
         'motd': motd,
         'keys': allkeys(request.META['HTTP_HOST']),
         'staffgroups': staffgroups,
     },context_instance=RequestContext(request))
+
+def redirect_home(request):
+    return HttpResponseRedirect('/')

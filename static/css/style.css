@@ -297,6 +297,18 @@ ul {
     }
 
 
+label {
+   display: block; 
+}
+
+.errorlist li {
+    margin-left: 0px;
+    padding: 10px;
+    background: #990000;
+    color: #fff;
+    list-style: none;
+}
+
 .sub_page_content {
     color: #424242;
     font-size: 1.05em;
@@ -439,6 +451,10 @@ ul {
 
 #controls ol {
     width: 460px;
+}
+
+.profile_form p {
+    margin-left: 50px;
 }
 
 .loginform {

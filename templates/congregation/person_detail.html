@@ -9,8 +9,8 @@
 
 {% block content %}
 <div class="grid_8 sub_page_content">
-    <h2>{% if object.prefix %}{{ object.prefix.prefix }} {% endif %}{{ object }}</h2>
-    {% if this_is_you %}<p><a href="{% url change_password %}">Change your password</a></p>{% endif %}
+    <h2>{% if object.prefix %}{{ object.prefix.initials }} {% endif %}{{ object }}</h2>
+    {% if this_is_you %}<p>Update <a href="{% url profile_manager %}">your details</a>{% if household_edit %} or <a href="{% url household_manager %}">your household details</a>{% endif %} | <a href="{% url password_change %}">Change your password</a></p>{% endif %}
 {% if object.picture %}
     <img class="float_right" src="{{ MEDIA_URL }}{{ object.picture.image }}" height="250px" title="{{ object }}" />
 {% endif %}

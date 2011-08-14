@@ -29,6 +29,6 @@ class Attachment(models.Model):
 
     def __unicode__(self):
         if self.category:
-            return u'%s - %s' % (self.category,self.file)
+            return u'%s [id=%s] - %s' % (self.category,self.pk,self.file)
         else:
-            return u'%s' % (self.file)
+            return u'[id=%s] %s' % (self.pk, self.file)

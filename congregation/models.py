@@ -164,6 +164,14 @@ class Person(models.Model):
     def __unicode__(self):
         return u'%s' % self.full_name
 
+    def save(self, *args, **kwargs):
+        try:
+            self.user.email = self.email
+            self.user.save()
+        except:
+            pass
+        super(Person, self).save(*args, **kwargs) # Call the "real" save() method.
+
     @property
     def full_name(self):
         if self.preferred_first_name:

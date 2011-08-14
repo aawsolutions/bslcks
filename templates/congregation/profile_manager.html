@@ -1,0 +1,17 @@
+{% extends "congregation/base_congregation.html" %}
+{% load markup %}
+
+{% block congregation_search %}
+{% endblock %}
+
+
+{% block content %}
+<div class="grid_8 sub_page_content profile_form">
+<h2>Virtual Directory Editor</h2>
+<form action="{% url profile_manager %}" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Save your changes" />
+</form>
+
+</div>
+{% endblock %}

@@ -1,4 +1,15 @@
 {% extends "base.html" %}
+{% block documentreadyfunction %}  
+            $("#findperson").focus(function(){
+                if(this.value=='church directory search')
+                {
+                    this.value=''
+                }
+            });
+{% endblock %}
+
+
+
 {% block meta_description %}{% endblock %}
 {% block logo %}  <div class="grid_4 leftnav">
             <a href="/"><img src="{{ MEDIA_URL }}images/logo-300.png" alt="return home" /></a>{% block leftnav %}

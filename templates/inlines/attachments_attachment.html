@@ -1,6 +1,6 @@
 {% load markup %}
 <div class="inline_attachment">
     <p>{{ object.description|markdown }}</p>
-    <p class="download_lnk">{% if arg != "privatize" or not object.protected %}<a href="{{ object.file.url }}">Click here to download</a>{% else %}<a href="{% url login %}">login to dowload</a>{% endif %}</p>
+    <p class="download_lnk">{% if arg != "privatize" or not object.protected %}<a href="{{ object.file.url }}">Click here to download</a>{% else %}<a href="{% url accounts_login %}">login to dowload</a>{% endif %}</p>
 </div>
 

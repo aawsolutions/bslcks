@@ -1,12 +1,24 @@
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404, render_to_response, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.generic import list_detail
 from django.template import RequestContext
+from django.forms import ModelForm
 
 from congregation.models import *
 
 from apikeys.fetch import allkeys
+
+class PersonForm(ModelForm):
+    class Meta:
+        model = Person
+        exclude = ('slug','user','active','member', 'role', 'directory_report_order', 'left', 'household', 'picture', 'deceased', 'bslc_individual', 'relations', 'joined', 'talents')
+
+class HouseholdForm(ModelForm):
+    class Meta:
+        model = Household
+        exclude = ('bslc_household', 'picture',)
 
 @login_required
 def congregation_home(request, **kwargs):
@@ -89,7 +101,10 @@ def household_detail(request, slug, **kwargs):
 def person_detail(request, slug, **kwargs):
     extra = {}
     if request.method == 'GET':
-        if request.user.get_profile().slug == slug:
+        person = request.user.get_profile()
+        if person.slug == slug:
+            if person.directory_report_order < 3:
+                extra['household_edit'] = True
             extra['this_is_you'] = True
             extra['editme'] = request.GET.get('edit', False)
         return list_detail.object_detail(
@@ -184,3 +199,41 @@ def search(request, template_name='congregation/search_results.html'):
             message = 'Search term was too vague. Please try again.'
             context = {'message':message}
     return render_to_response(template_name, context, context_instance=RequestContext(request))
+
+
+@login_required
+def profile_manager(request):
+    if request.method == 'POST':
+        form = PersonForm(request.POST, instance=request.user.get_profile())
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse(person_detail, args=(request.user.get_profile().slug,)))
+
+    else:
+        person = request.user.get_profile()
+        form = PersonForm(instance=person)
+
+    return render_to_response('congregation/profile_manager.html', {
+        'form': form,
+    },context_instance=RequestContext(request))
+
+@login_required
+def household_manager(request):
+    person = request.user.get_profile()
+    if person.directory_report_order < 3:
+        if request.method == 'POST':
+            form = HouseholdForm(request.POST, instance=person.household)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse(household_detail, args=(person.household.slug,)))
+    
+        else:
+            household = person.household
+            form = HouseholdForm(instance=household)
+    
+        return render_to_response('congregation/profile_manager.html', {
+            'form': form,
+        },context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect(reverse(household_detail, args=(person.household.slug,)))
+

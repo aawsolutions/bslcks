@@ -14,18 +14,28 @@ urlpatterns = patterns('',
     (r'^news/',      include('basic.blog.urls')),
     (r'^bookmarks/', include('basic.bookmarks.urls')),
     (r'^comments/', include('basic.comments.urls')),
-    (r'^events/', include('basic.events.urls')),
+    #(r'^mission/', include('basic.mission.urls')),
     (r'^places/', include('basic.places.urls')),
     (r'^dailybread/', include('dailybread.urls')),
     (r'^surveys/', include('survey.urls')),
     (r'^rss/', LatestNewsFeed()),
 )
 
+
 urlpatterns += patterns('django.contrib.auth.views',
-    url(r'^accounts/login/$', 'login', kwargs={'template_name': 'accounts/login.html',}, name='login'),
-    url(r'^accounts/logout/$', 'logout', kwargs={'template_name': 'accounts/logout.html'}, name='logout'),
-    url(r'^accounts/pwchange/$', 'password_change', kwargs={'template_name': 'accounts/pwchange.html'}, name='change_password'),
-    url(r'^accounts/pwchange/success/$', 'password_change_done', kwargs={'template_name': 'accounts/success.html'}, name='password_change_success')
+    url(r'^accounts/login/$', 'login', name='accounts_login'),
+    url(r'^accounts/logout/$', 'logout', {'next_page': '/',}),
+
+    url(r'^accounts/password-change/$', 'password_change', name='password_change'),
+    url(r'^accounts/password-change/success/$', 'password_change_done'),
+
+    url(r'^accounts/password-reset/$', 'password_reset'),
+    url(r'^accounts/password-reset/done/$', 'password_reset_done'),
+
+    url(r'^accounts/password-reset-confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'password_reset_confirm'),
+    url(r'^accounts/reset/done/$', 'password_reset_complete'),
+
+
 )
 
 urlpatterns += patterns('bslcks.views',
@@ -40,4 +50,7 @@ urlpatterns += patterns('bslcks.views',
     url(r'^staff/',
         view='Staff',
         name='staff'),
+
+    url(r'^accounts/$',
+        view='redirect_home')
 )
