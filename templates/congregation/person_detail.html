@@ -28,7 +28,7 @@
 <ul>
     <li><a href="{{ object.household.get_absolute_url }}">Household & Address</a></li>
     {% if object.birth_date %}<li>Birthday: {{ object.birth_date|date:"F jS" }}</li>{% endif %}
-    {% if object.baptism_date %}<li>Baptised: {{ object.baptism_date|date:"F jS" }}</li>{% endif %}
+    {% if object.baptism_date %}<li>Baptized: {{ object.baptism_date|date:"F jS" }}</li>{% endif %}
     {% if object.joined %}<li>Joined: {{ object.joined|date:"F jS, Y" }}</li>{% endif %}
 
 </ul>    

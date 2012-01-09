@@ -81,7 +81,10 @@ def scripture_reference(request, reference):
     passage = reference
     
     dailybread = Daily()
-    dailybread.passage = ESVscripture(reference, request.META['HTTP_HOST'])
+    try:
+        dailybread.passage = ESVscripture(reference, request.META['HTTP_HOST'])
+    except:
+        dailybread.passage = 'This reference could not be found'
 
     return render_to_response('dailybread/todays_bread.html', {
         'dailybread': dailybread,

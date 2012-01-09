@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db.models import permalink
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 from django.db.models import Count
 from django.contrib.localflavor.us.models import *
 from django.db import models
@@ -28,10 +29,13 @@ class UserLogin(models.Model):
 
 @receiver(pre_save, sender=User, dispatch_uid='LoginCounter')
 def user_presave(sender, instance, **kwargs):
-    if instance.last_login:
-        old = instance.__class__.objects.get(pk=instance.pk)
-        if instance.last_login != old.last_login:
-            instance.userlogin_set.create(timestamp=instance.last_login)
+    try:
+        if instance.last_login:
+            old = instance.__class__.objects.get(pk=instance.pk)
+            if instance.last_login != old.last_login:
+                instance.userlogin_set.create(timestamp=instance.last_login)
+    except:
+        pass
 
 
 class Talents(models.Model):
@@ -153,7 +157,7 @@ class Person(models.Model):
 
     deceased = models.DateField(null=True, blank=True)
 
-    bslc_individual = models.CharField('BSLC DB Individual #', blank=True, max_length=15, unique=True)
+    bslc_individual = models.CharField('BSLC DB Individual #', blank=True, null=True, max_length=15, unique=True)
 
     class Meta:
         verbose_name = 'person'
@@ -199,6 +203,12 @@ class Person(models.Model):
     @permalink
     def get_absolute_url(self):
         return ('person_detail', None, {'slug': self.slug}) 
+
+#def create_user_profile(sender, instance, created, **kwargs):
+#    if created:
+#        Person.objects.create(user=instance)
+
+#post_save.connect(create_user_profile, sender=User)
 
 class GroupType(models.Model):
     name = models.CharField('group type name', max_length=100)

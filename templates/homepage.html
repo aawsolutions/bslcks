@@ -54,7 +54,7 @@
                 <li>
                     <h1>{{ post.title }} ({{ post.publish|date:"n/j" }})</h1>
                     <div class="slider_message">
-                        {% if user.is_authenticated %}{{ post.body|markdown|striptags|truncatechars:330 }}{% else %}{{ post.body|markdown|striptags|privatize|truncatechars:330 }}{% endif %} <a href='{{post.get_absolute_url }}'>read more</a>
+                        {% if user.is_authenticated %}{% if post.tease %}{{ post.tease|markdown|striptags|truncatechars:330 }}{% else %}{{ post.body|markdown|striptags|truncatechars:330 }}{% endif %}{% else %}{% if post.tease %}{{ post.tease|markdown|striptags|privatize|truncatechars:330 }}{% else %}{{ post.body|markdown|striptags|privatize|truncatechars:330 }}{% endif %}{% endif %} <a href='{{post.get_absolute_url }}'>read more</a>
                     </div>
                 </li>{% endfor %}
           </ul> 
