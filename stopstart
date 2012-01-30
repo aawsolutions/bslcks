@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Replace these three settings.
-PROJDIR="/home/apt9online/www/rigby"
-PIDFILE="$PROJDIR/rigby.pid"
-SOCKET="$PROJDIR/rigby.sock"
+PROJDIR="/home/apt9online/www/bslcks"
+PIDFILE="$PROJDIR/bslcks.pid"
+SOCKET="$PROJDIR/bslcks.sock"
 
 cd $PROJDIR
 if [ -f $PIDFILE ]; then
