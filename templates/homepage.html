@@ -3,7 +3,7 @@
 {% load markup mytags %}
 
 {% block extra_css %}
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/slider.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/slider.css" /> 
     {% if season_color %}    <style type="text/css">
         .liturgi-cal {
             width: 100%;
@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block extra_head %}
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/easySlider1.7.js"></script>
+    <script type="text/javascript" src="/static/js/easySlider1.7.js"></script>
 {% endblock %}
 
 {% block emergency_message %}
@@ -41,7 +41,7 @@
 
 {% block logo %}
     <div class="logo grid_6">
-        <a href="/"><img src="{{ MEDIA_URL }}images/logo-460-slogan.png" alt="return home"/></a>
+        <a href="/"><img src="{{ MEDIA_URL }}/img/logo-460-slogan.png" alt="return home"/></a>
         <p><a href="/map" title="Click here for Map and Directions">13145 Blackbob Road | Olathe, KS 66062 | 913.780.6023</a></p>
 
     </div>
@@ -90,10 +90,10 @@
         <h1>Connect with us</h1>
         <div class="mediaicons">
           <ul>
-            <li><a href="/rss"><img src="{{ MEDIA_URL }}images/icons/rss_sm.jpg" alt="rss feeds"/></a></li>
-            <li><a href="http://www.twitter.com/bslcks"><img src="{{ MEDIA_URL }}images/icons/twitter_sm.jpg" alt="twitter feed"/></a></li>
-            <li><a href="http://www.vimeo.com/bslcks" title="BSLCKS on Vimeo"><img src="{{ MEDIA_URL }}images/icons/vimeoico_sm.png" alt="vimeo channel"/></a></li>
-            <li><a class="mediaicons_last" href="http://youtube.com/bslcks"><img src="{{ MEDIA_URL }}images/icons/youtube_sm.jpg" alt="youtube channel"/></a></li>
+            <li><a href="/rss"><img src="{{ MEDIA_URL }}/img/icons/rss_sm.jpg" alt="rss feeds"/></a></li>
+            <li><a href="http://www.twitter.com/bslcks"><img src="{{ MEDIA_URL }}/img/icons/twitter_sm.jpg" alt="twitter feed"/></a></li>
+            <li><a href="http://www.vimeo.com/bslcks" title="BSLCKS on Vimeo"><img src="{{ MEDIA_URL }}/img/icons/vimeoico_sm.png" alt="vimeo channel"/></a></li>
+            <li><a class="mediaicons_last" href="http://youtube.com/bslcks"><img src="{{ MEDIA_URL }}/img/icons/youtube_sm.jpg" alt="youtube channel"/></a></li>
           </ul>
         </div>
         {% if user.is_authenticated %}<form action="{% url congregation_search %}" method="get">

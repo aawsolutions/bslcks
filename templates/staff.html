@@ -9,7 +9,7 @@
     {% for key, group in staffgroups.items %}
        {% for person in group %}
        <div class="profile">
-           <img src="{{ MEDIA_URL }}{{ person.picture.image }}" alt="{{ person.picture.title }}" />
+           <img src="/static/{{ person.picture.image }}" alt="{{ person.picture.title }}" />
            <h1>{{ person }}</h1>
            {% for roles in person.role.values %}<h3>{{ roles.name }}</h3>{% endfor %}
            <p>{{ person.bio|markdown }}</p>

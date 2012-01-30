@@ -11,7 +11,7 @@
 /* Easy Slider */
     #slider {
         vertical-align: middle;
-        background-image: url('http://static.bslcks.org/images/slidebg-angle.jpg');
+        background-image: url('/static/img/slidebg-angle.jpg');
 
     }
     #slider h1 {
