@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Replace these three settings.
+PROJDIR="/home/apt9online/www/rigby"
+PIDFILE="$PROJDIR/rigby.pid"
+SOCKET="$PROJDIR/rigby.sock"
+
+cd $PROJDIR
+if [ -f $PIDFILE ]; then
+    kill `cat -- $PIDFILE`
+    rm -f -- $PIDFILE
+fi
+
+python2.7 manage.py runfcgi socket=$SOCKET pidfile=$PIDFILE maxchildren=1 maxspare=1
